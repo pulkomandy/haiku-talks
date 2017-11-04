@@ -1,0 +1,25 @@
+\beamer@endinputifotherversion {3.07pt}
+\select@language {french}
+\beamer@sectionintoc {1}{Pr\'esentation}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Moi}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Le projet Haiku}{7}{0}{1}
+\beamer@sectionintoc {2}{Les logiciels libres}{11}{0}{2}
+\beamer@subsectionintoc {2}{1}{Historique}{12}{0}{2}
+\beamer@subsectionintoc {2}{2}{Les quatre libert\'es}{17}{0}{2}
+\beamer@subsectionintoc {2}{3}{Les licences}{21}{0}{2}
+\beamer@subsectionintoc {2}{4}{Le libre et l'Open Source}{32}{0}{2}
+\beamer@sectionintoc {3}{Le libre et l'\'economie}{33}{0}{3}
+\beamer@subsectionintoc {3}{1}{La vision \`a long terme}{34}{0}{3}
+\beamer@subsectionintoc {3}{2}{Gagner de l'argent avec le libre}{37}{0}{3}
+\beamer@subsectionintoc {3}{3}{Le libre en dehors du logiciel}{44}{0}{3}
+\beamer@subsectionintoc {3}{4}{L'avenir du logiciel libre}{47}{0}{3}
+\beamer@sectionintoc {4}{La communaut\'e du logiciel libre}{51}{0}{4}
+\beamer@subsectionintoc {4}{1}{Organisation d'un projet}{52}{0}{4}
+\beamer@subsectionintoc {4}{2}{Les motivations}{56}{0}{4}
+\beamer@subsectionintoc {4}{3}{Comment rejoindre un projet}{61}{0}{4}
+\beamer@subsectionintoc {4}{4}{Le macrocosme du libre}{65}{0}{4}
+\beamer@subsectionintoc {4}{5}{Les modes de travail}{68}{0}{4}
+\beamer@subsectionintoc {4}{6}{Les limites du libre}{75}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{78}{0}{5}
+\beamer@subsectionintoc {5}{1}{Les pr\'ejug\'es}{79}{0}{5}
+\beamer@subsectionintoc {5}{2}{En pratique}{85}{0}{5}

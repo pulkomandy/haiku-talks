@@ -1,0 +1,283 @@
+@designsize=800x600
+
+@ A Year in WebKit
+PulkoMandy - BeGeistert 028
+
+@ Welcome!
+
+I'm Adrien Destugues aka PulkoMandy
+* BeOS user since 2005
+* Haiku hacker since 2008
+* Designer of the Locale Kit (GSoC 2009)
+* Doing contract work for Haiku 
+^since october 2014
+
+@ What is this talk about anyway?
+
+It's about porting WebKit to Haiku!
+You are asking yourself a lot of questions now:
+* What is this WebKit thing?
+* When did it get ported?
+* Why not Firefox\/Chromium?
+* Why does it take so much time to port WebKit?
+
+@ A brief history of haikuwebkit - early days
+
+Porting effort started by Ryan Leavengood in 2007
+* With the goal of integrating into Haiku sources 
+* It was meant to be used for a NetPositive replacement
+
+Technical choices:
+* Custom build system using Jamfiles
+^ (instead of XCode, gyp, CMake, qmake or autotools
+^ 1 port, 1 buildsystem was the rule back then)
+* gcc4 support only - WebKit uses too advanced C++
+* Use of the generic curl network backend
+
+@ Brief history - takeoff
+
+Maxime Simon worked on it during GSoC 2009
+* Dropped the idea of integrating into Haiku sources
+^ (We had OptionalPackages at this point)
+* Got HaikuLauncher (a simple test for WebKit) to run
+^ and render web pages on Haiku
+
+@ Brief history - refinements
+
+Stephan Assmus and Alexandre Deckner continued the work
+* Implementation of WebPositive, Haiku's web browser
+* Many small fixes to WebKit
+* Work on a forked version based on Maxime's work
+
+Christophe Huriaux (GSoC 2010) work on "service kit"
+* Originally an API for Haiku applications to use web services
+* Project derived to be mostly 
+^ a native HTTP backend for WebKit
+* Partial integration in WebKit by stippi and nielx.
+
+@ Brief history - stall
+
+Alexandre Deckner started migrating
+to a more recent WebKit in 2010.
+
+* Switched from SVN to git to ease merging
+* Updated the port to then-current WebKit
+* Left in unfinished state
+** working, but many rendering problems
+** very slow network access and rendering
+
+Sources left mostly untouched since then.
+
+@ So, what is WebKit?
+
+A portable engine for the Web
+* Originally a fork of KHML by Apple
+* Powers Safari on OSX and iOS
+* Also used by EFL\/Tizen and GTK\/GNOME
+* Not used anymore by Chromium (Google) and Qt
+** Google forked it as Blink, but the two projects are
+^ still in good terms and try to merge code from each other
+
+@ What is it made of
+
+!1
+WTF
+* platform abstraction layer
+* staging area for features not yet in C++
+* similar to boost
+
+Javascriptcore
+* JavaScript engine
+* interpreter and JIT
+* provides a standalone interpreter: JSC
+
+WebCore
+* generic DOM and HTML/CSS rendering code
+* actually many platform specific parts
+** drawing, fonts, audio/video
+* Provides an internal API to WebKit and WebKit2
+!2
+WebKit
+* platform-specific APIs for applications
+* there isn't a single WebKit
+* now deprecated and legacy
+
+WebKit2
+* New platform specific APIs
+* Allows using a separate "web process" for rendering
+* Actively maintained
+* Slightly closer to BeOS/Haiku philosophy.
+
+@ Why not port Firefox or Chromium?
+
+Unlike those, WebKit uses as much native platform features
+^ as possible
+* Native drawing using app_server APIs
+* Native fonts
+* Native network backend (using the Network Kit)
+* Native threads
+* Native media decoding
+... native everything!
+
+@ Why is that good?
+
+No "forced" dependencies
+* No need to port Cairo, Skia, Soup, NSS
+
+Better integration
+* Font rendering is the same as in other applications
+* Native controls in HTTP forms
+* Easy and clean interfacing with other parts of the system
+** Web notifications
+** Use of Translators and media decoders
+
+Use as a system API
+* BWebView for integration in other apps
+* Replicant support
+
+@ What are the downsides?
+
+Porting is hard!
+* We need to tell WebKit how to use all our native APIs
+* Lots of code to write
+
+A stress test for our APIs
+* WebKit needs extensive support from native APIs
+* Often the BeAPI is lacking and needs to be improved
+** Affine transforms and alpha masking in app_server
+** HTTP (and Gopher) support in the Network Kit
+** BGeolocation, and more
+
+@ Are there other issues?
+
+WebKit is single threaded
+* (almost) everything must run in the main thread
+* Not compatible with the "1 window, 1thread" BeAPI
+* We avoid issues by using offscreen rendering
+^ but that makes things a lot slower
+* WebKit2 uses multiple processes
+** still not a perfect solution, but it would help
+
+WebKit is big and C++11
+* Long compile times
+* Prepare a powerful machine
+* Web2.0 is complex
+** There is no way around that
+** ... unless you use NetSurf
+
+@ What did happen during this year?
+
+First steps: getting things back on track
+* Updating our sources to current WebKit
+** 3 months at a time, reviewing change lists
+^ to know what to fix
+* Rewriting the buildsystem
+** Switched to cmake, which is also used by GTK and EFL
+** Apple is considering a switch to CMake too
+** One buildsystem to rule them all
+* Rebase our git tree on WebKit github mirror
+** Makes merging much easier
+
+Our cmake port needed some fixes, which are now
+upstreamed. I also ported ninja, a make replacement which
+makes the build run a bit faster, especially when there are
+few changes.
+
+@ On the network side
+
+Integration of the "Services Kit"
+* The curl backend is not actively maintained
+* ELF and GTK use soup, which needs glib
+* The HTTP code in the "services kit" was incomplete
+** Needed a lot of debugging and fixes
+** Also some redesign of the class hierarchy
+** And a testsuite
+
+The HTTP code is now also used by HaikuDepot and fRiSS.
+* Makes it easy to make web-enabled native applications
+* Wraps all the boring details of HTTP under a simple API.
+
+@ On the drawing side
+
+Drawing code rework
+* WebKit requires some advanced drawing features
+** alpha channels, affine and 3D transforms
+** gradients, clipping shapes
+* Several bugfixes to existing code
+* "3D rendering" partially implemented
+
+This resulted in several improvements to app_server
+and Interface Kit
+* ClipToPicture support
+* Gradients bugfixes
+* BAffineTransform support in BView
+* Native applications can use those, too.
+
+@ On the HTML side
+
+Work on HTML5 features
+* Advanced input types: ranges, colors, dates and times
+* Web notifications
+* Web sockets
+* Geolocation
+* Video/Audio support
+* And some more...
+
+HTML5test score went from 254 to 419 points over 555.
+
+@ The testsuites
+
+DumpRenderTree port
+* A tool to dump the WebKit render tree
+* Size, position, color and text contents of all boxes
+^ on the page
+* Easy comparison with reference tree
+* Also dumps PNGs for most complext tests
+
+Native testsuites
+* I wrote some tests for the new interface kit features
+* Simple tests are easier to debug than real world apps
+
+@ Miscellaneous work
+
+Application porting
+* vlc, vncviewer, multitalk, and much more
+* useful for me and hopefully for others
+* available in HaikuDepot
+
+Haiku bugfixes and improvements
+* Locale Kit work continues
+* Screensaver debugging
+
+
+@ What comes next?
+
+!1
+Continue the work
+* There are still network and rendering issues
+* Some code is not clean (eg. video support)
+* Get testsuites to pass
+* Continue improving HTML5 support
+* i18n support
+* plugins
+
+Upstreaming efforts
+* Some changes have been upstreamed already
+* We need more people with commit access to
+^ the WebKit repo
+
+!2
+Swich to WebKit2
+* Needs a lot of cleanups
+* It's where the current developments happen
+* Potential for more responsive UI
+
+Finalize BWebView
+* Still not easily usable in standard applications
+* WebKit2 could make this easier
+
+Get more people involved
+* Having only one developer know about things is
+^never a good idea
+* Peer review may help
+* People with different skills will solve more problems

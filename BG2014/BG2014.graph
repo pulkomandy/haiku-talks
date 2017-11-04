@@ -1,0 +1,20 @@
+@0	0	A Year in WebKit
+@-40	400	Welcome!
+@1000	400	What is this talk about anyway?
+@920	1000	A brief history of haikuwebkit - early days
+@960	1760	Brief history - takeoff
+@920	2360	Brief history - refinements
+@1040	3080	Brief history - stall
+@2120	3160	So, what is WebKit?
+@3240	3040	What is it made of
+@3200	4520	Why not port Firefox or Chromium?
+@3200	5240	Why is that good?
+@3240	6200	What are the downsides?
+@3280	7080	Are there other issues?
+@1640	7120	What did happen during this year?
+@440	7160	On the network side
+@360	8000	On the drawing side
+@440	8840	On the HTML side
+@400	9560	The testsuites
+@560	10240	Miscellaneous work
+@1920	9520	What comes next?

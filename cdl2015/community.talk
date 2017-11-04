@@ -1,0 +1,131 @@
+@ Haiku, un projet libre vu de l'intérieur
+
+Adrien Destugues - www.haiku-os.org
+Capitole du Libre 2015
+
+@ Haiku?
+
+* Système d'exploitation libre
+* Compatible avec BeOS
+* Projet démarré en 2001
+* 33 développeurs membres
+
+@ PulkoMandy
+
+* Contributeur Haiku depuis 2009
+* Mentor GSoC et GCI
+* Développeur à plein temps pour Haiku
+pendant 1 an
+
+@ Organisation:
+ * Un projet (www.haiku-os.org)
+ * Deux associations (Haiku, Inc et HSA)
+ * Une communauté
+
+@ Localisation
+* Allemagne, France, USA, Nouvelle Zélande, …
+* Traductions:
+  ** 40 langues en cours (y compris l'Esperanto)
+  ** 30 à peu près complètes
+
+
+
+
+@ Communauté
+  * Utilisateurs
+  ** Nombre inconnu!
+  * Rapporteur de bugs
+  * Forums, mailing lists,
+	canaux IRC ou salons XMPP
+  * HUGs locaux (par pays)
+  * Autres sites web
+    ** UBIX, IsComputerOn, HaikuWare, BeBits,..
+
+@ Culture et private jokes
+* "We could call it Walter"
+* "Locked in the basement"
+
+
+
+
+
+@ Haiku, Inc
+* Créée en XXXX par le fondateur du projet
+* Objectif: séparer les fonds projet
+de son compte en banque personnel
+* Gestion des finances
+* Détentrice du copyright sur une partie du code
+* Détentrice des marques déposées
+* Pas d'intervention sur les décisions techniques
+
+* Pas d'adhésion payante
+* Seulement 5 membres
+** Dont 4 sont également dévelopeurs
+
+@ Finances
+
+Entrées:
+* Dons
+* Ventes de goodies et de CDs
+
+Sorties:
+* Hébergement web
+* Contrats avec les dévelopeurs
+* Bounties
+
+@ Haiku Support Association
+* Groupement d'utilisateurs
+* Adhésion payante (36 euros par an)
+* 19 membres
+* Organisation de la conférence BeGeistert
+et du coding sprint
+
+
+
+
+
+@ Le projet Haiku
+* Entité informelle
+* Développeurs ayant accès au git
+
+@ Workflow
+* Dépot Git
+* Suivi de bugs et de patches sur Trac
+* Mailing lists et canaux IRC pour les discussions
+
+@ Les projets satellites:
+* haikuports,
+* haikudepot server,
+* haikuarchives,
+* 3rd party apps
+
+@ Les contributions upstream:
+* Trac (dépot mercurial), Pootle
+* libsolv
+* clang, cmake
+* Les forks: gcc/glibc
+
+@ Les évènements
+* BeGeistert (organisé par HSA)
+** Conférence et Coding Sprint
+* GSoC / GCI
+** Encadrement de lycéens et d'étudiants
+** Initiation à l'open source
+** Financé par Google
+* Participation à d'autres évènements
+** Capitole du Libre
+** FOSDEM
+** Ohio Linux Fest
+** ...
+
+
+
+
+@ Projets commerciaux
+* TuneTracker Systems
+* iZCorp
+
+@ Distributions et forks
+* TiltOS
+* Senryu
+* Land of the Leaves

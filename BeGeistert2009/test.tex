@@ -1,0 +1,178 @@
+% /solutions/conference-talks/conference-ornate-20min.fr.tex, 22/02/2006 De Sousa
+
+\documentclass{beamer}
+\usepackage{graphicx}
+% Ce fichier est un exemple-type pour :
+
+% - donner un exposé sur un certain sujet
+% - une durée variant de 15 à 45 minutes
+% - un style ornemental.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% Traduction de Philippe De Sousa <philippejjg@free.fr>
+%
+% En principe, ce fichier peut être redistribué et/ou modifié conformément
+% aux termes de la GNU Public License, version 2.
+%
+% Cependant, ce fichier est supposé comme étant un "exemple-type" qui
+% peut être modifié selon vos propres besoins. Pour cette raison, si
+% vous utilisez ce fichier en tant qu' "exemple-type" et non
+% spécifiquement pour le distribuer en tant que partie d'un package ou
+% programme, je vous donne la permission exceptionnelle de copier
+% librement et de modifier ce fichier et même d'effacer ce message de
+% copyright. 
+
+
+
+\mode<presentation> {
+  \usetheme{AnnArbor}
+  % ou autre ...
+
+  \setbeamercovered{transparent}
+  % ou autre chose (il est également possible de supprimer cette ligne)
+}
+
+
+\usepackage[french]{babel}
+% or autre comme par exemple \usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+% or autre
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or autre. Notez que le codage et la fonte doivent être assortis. Si T1
+% ne paraît pas très esthétique, essayer d'effacer la ligne contenant fontenc.
+
+
+\title % (facultatif, à utiliser uniquement si le titre de l'article est trop long)
+{Haiku locale kit overview}
+
+%\subtitle {Sous-titre de la présentation}
+
+\author[] % (facultatif, à utiliser seulement avec plusieurs auteurs)
+{Adrien Destugues}
+% - Composez les noms dans l'ordre dans lequel ils apparaîtrons dans l'article
+% - Utilisez la commande \inst{?} uniquement si les auteurs ont des affiliations
+%   différentes.
+
+\institute[BeGeistert 021] % (facultatif mais généralement nécessaire)
+{
+	BeGeistert 021
+}
+% - Utilisez la commande \inst uniquement s'il y a plusieurs affectations
+% - Faîtes quelque chose de simple, personne ne s'intéresse à votre adresse.
+
+%\date % (facultatif)
+%{6 juin 2009}
+
+% Si vous avez un fichier nommé "université-logo-nomfichier.xxx", où xxx
+% est un format graphique accepté par latex ou pdflatex (comme par exemple .png),
+% alors vous pouvez insérer votre logo ainsi :
+
+\pgfdeclareimage[height=0.5cm]{le-logo}{haiku.pdf}
+\logo{\pgfuseimage{le-logo}}
+
+
+
+% À supprimer si vous ne voulez pas que la table des matières apparaisse
+% au début de chaque sous-section :
+
+%\AtBeginSubsection[] {
+%  \begin{frame}<beamer>{Lignes directrices}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+
+% Si vous souhaitez recouvrir vos transparents un à un,
+% utilisez la commande suivante (pour plus d'info, voir la page 74 du manuel
+% d'utilisation de Beamer (version 3.06) par Till Tantau) :
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Overview}
+  \tableofcontents
+  % Vous pouvez, si vous le souhaiter ajouter l'option [pausesections]
+\end{frame}
+
+
+% Puisqu'il s'agit d'un exemple-type pour un exposé d'ordre général, peu de choses
+% peuvent être dites concernant sa structure. Cependant, la durée varie de 15 minutes
+% à 45 minutes et le thème vous suggère de suivre les règles suivantes :
+
+% - Avoir exactement deux ou trois sections (autre que la table des matières).
+% - Tout au plus trois sous-sections par section
+% - Parlez approximativement entre 30 secondes et 2 minutes par transparent. Il
+%   devrait donc y avoir entre 15 et 30 transparents, tous ayant été commentés.
+
+\section{Concepts and ideas} 
+\begin{frame}{Makes the system more friendly}
+	\begin{itemize}
+	\item Texts in your natural language
+	\item Date, time, number and currency formatting and parsing
+	\item Conventions : timezones, and other things (colors, sounds, ...)
+	\end{itemize}
+\end{frame}
+
+\section{Inner workings} 
+\begin{frame}
+	\begin{itemize}
+	\item ICU as a backend for all formatting and parsing work, with an API wrapper
+	\item Custom code for handling text catalogs
+	\end{itemize}
+\end{frame}
+
+\section{How to use it in your app}
+
+\begin{frame}{Example}
+\end{frame}
+
+\begin{frame}{Notes}
+\begin{itemize}
+\item Define a context for each part of your app
+\item Enclose every string you want to use in a call to the TR() macro
+\item Don't forget to initialize the catalog a the start of your application and destroy it at the end.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Building}
+\begin{itemize}
+\item Build your application as usual, linking to liblocale.so.
+\item Extract the string to translate from the file using the "collectcatkeys" tools (on a preprocessed C++ sourcefile)
+\item Translate the catkeys file to any language you need
+\item Link your catalogs into a binary format (flatenned BMessage) using linkcatkeys
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Special cases}
+\begin{itemize}
+\item Localizing an add-on needs to load a catalog by hand. You can't use the app one!
+\item Localizing a script can be done in two ways, either call to the (to-be-written) localize application or built-in support in your script language interpreter.
+\item Static strings can't be translated in place at compile time, so they need special handling (using TR\_MARK)
+\end{itemize}
+In any of these cases, you can't use the TR macros directly anymore.
+\end{frame}
+
+\section{Work still needed}
+\begin{frame}
+\begin{itemize}
+\item More testing, most notably on the date, time, number formatting part
+\item Font overlay for japanese characters (and probably others)
+\item Converting applications to use the layout kit and localizing them
+\item Load gettext and zeta catalogs files and convert them
+\item Providing and improving catalogs for your own language
+\end{itemize}
+\end{frame}
+
+\end{document}

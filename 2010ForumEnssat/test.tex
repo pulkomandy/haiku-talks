@@ -1,0 +1,321 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+
+\mode<presentation> {
+%  \usetheme{Montpellier}
+  \usecolortheme{beaver}
+  \usecolortheme{orchid}
+  \useoutertheme{smoothtree}
+  \useinnertheme{rounded}
+
+  \setbeamercovered{transparent}
+  % ou autre chose (il est également possible de supprimer cette ligne)
+}
+
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or autre. Notez que le codage et la fonte doivent être assortis. Si T1
+% ne paraît pas très esthétique, essayer d'effacer la ligne contenant fontenc.
+
+\title % (facultatif, à utiliser uniquement si le titre de l'article est trop long)
+{Le monde des logiciels libres}
+
+\subtitle {Un aperçu du libre, de ses points faibles, de ses points forts et de ses enjeux}
+
+\author[] % (facultatif, à utiliser seulement avec plusieurs auteurs)
+{Adrien Destugues}
+% - Composez les noms dans l'ordre dans lequel ils apparaîtrons dans l'article
+% - Utilisez la commande \inst{?} uniquement si les auteurs ont des affiliations
+%   différentes.
+
+\institute[Forum ENSSAT] % (facultatif mais généralement nécessaire)
+{
+	Forum ENSSAT 2010
+}
+% - Utilisez la commande \inst uniquement s'il y a plusieurs affectations
+% - Faîtes quelque chose de simple, personne ne s'intéresse à votre adresse.
+
+%\date % (facultatif)
+%{6 juin 2009}
+
+\pgfdeclareimage[height=0.5cm]{le-logo}{haiku.pdf}
+\logo{\pgfuseimage{le-logo}}
+
+% ne pas afficher les sous-sections dans la table des matières
+\setcounter{tocdepth}{1}
+
+% À supprimer si vous ne voulez pas que la table des matières apparaisse
+% au début de chaque sous-section :
+\AtBeginSection[] {
+  \begin{frame}<beamer>{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% Si vous souhaitez recouvrir vos transparents un à un,
+% utilisez la commande suivante (pour plus d'info, voir la page 74 du manuel
+% d'utilisation de Beamer (version 3.06) par Till Tantau) :
+\beamerdefaultoverlayspecification{<+->}
+
+% Redéfinir la page de titre (sans date dessus)
+\defbeamertemplate*{title page}{progressbar theme}{
+  \makeatletter
+  \begin{center}
+    \textbf{\textcolor{structure.fg}\large\inserttitle}
+
+	\insertsubtitle
+    
+    \vskip\baselineskip
+    \footnotesize\insertauthor\\[\baselineskip]
+    \ifx\insertinstitute\@empty \else\tiny\insertinstitute\\[\baselineskip]\fi
+  \end{center}
+  \makeatother
+}
+\setbeamertemplate{title page}[mytitlepage]
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \small{"This resembles the relationship between Newtonian and Einsteinian physics - the older system is still valid at low energies, but if you push mass and velocity high enough you get surprises like nuclear explosions or Linux."}
+\end{frame}
+
+\frame{
+	\frametitle{Plan}
+	\tableofcontents
+}
+  % Vous pouvez, si vous le souhaiter ajouter l'option [pausesections]
+
+\section{Présentation}
+	\subsection{Moi}
+		\begin{frame}
+			\begin{itemize}
+				\item Adrien Destugues, élève ingénieur ENSSAT EII2
+				\item Membre du projet Haiku depuis mai 2009
+				\item Contributeur de plusieurs autres projets libres
+			\end{itemize}
+		\end{frame}
+	\subsection{Le projet Haiku}
+		\begin{frame}
+			\begin{itemize}
+				\item Un système d'exploitation (comme Windows ou Linux)
+				\item Inspiré et compatible avec BeOS
+				\item Destiné à une utilisation sur un ordinateur personnel
+				\item En développement depuis 2001, première version alpha en septembre 2009
+			\end{itemize}
+			\includegraphics[scale=0.25]{haikus.png}
+		\end{frame}
+
+\section{Les logiciels libres}
+	\subsection{Historique}
+		\begin{frame}
+			\begin{itemize}
+				\item Années 60 et 70 : le matériel est vendu, le logiciel est libre en l'absence de législation
+				\item 1976 : naissance de la micro-informatique et début de la séparation entre logiciel et matériel
+				\item 1981 : la licence MS-DOS
+				\item 1983 : le projet GNU
+				\item 1991 : Linux
+			\end{itemize}
+		\end{frame}
+%recette de cuisine
+	\subsection{Les quatre libertés}
+	\begin{frame}
+			\begin{block}{Liberté 0}
+				Utiliser le logiciel
+
+				Contre exemples : Google Documents, Windows XP
+			\end{block}
+			\begin{block}{Liberté 1}
+				Étudier le logiciel
+
+				Accès au code source
+			\end{block}
+			\begin{block}{Liberté 2} 
+				Distribuer et partager le logiciel
+			\end{block}
+			\begin{block}{Liberté 3}
+				Modifier le logiciel et distribuer les versions modifiées
+			\end{block}
+	\end{frame}
+	\subsection{Les licences}
+	\begin{frame}
+		\frametitle{La licence GPL}
+		\begin{itemize}
+			\item Créée par la Free Software Foundation
+			\item Environ 70\% des logiciels libres
+			\item Liberté du programme avant celle du programmeur : lorsqu'on modifie un programme, on est obligé de publier les changements avec la même licence.
+			\item Texte assez compliqué\ldots
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{La licence BSD/MIT}
+		\begin{itemize}
+			\item Créée par l'université de Californie
+			\item Liberté du programmeur avant celle du programme : tout est autorisé
+			\item Il est possible de mélanger du code BSD avec du code non libre ou sous GPL
+			\item Texte simple : seulement 5 lignes
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Les autres licences}
+		\begin{itemize}
+			\item Le domaine public : renoncement complet aux droits d'auteur (variable selon les pays)
+			\item La licence LGPL : GPL adaptée aux bibliothèques de code
+			\item Affero : une licence adaptée à l'utilisation de logiciels en ligne (sites internet, \ldots)
+		\end{itemize}
+	\end{frame}
+
+\subsection{Le libre et l'Open Source}
+	\begin{frame}
+		Un logiciel libre est toujours open source,
+
+		Un logiciel open source n'est pas toujours libre.
+
+		L'open source ne garantit que la liberté n°2 : étudier le programme.
+	\end{frame}
+
+\section{Le libre et l'économie}
+\subsection{La vision à long terme}
+	\begin{frame}
+		\begin{itemize}
+			\item Redéfinir le modèle économique du logiciel
+			\item Copier et distribuer un logiciel ne coûte rien, le concevoir demande du travail
+			\item Acheter du code (ou du temps de travail) à une entreprise ou à un programmeur, puis en faire ce qu'on veut
+		\end{itemize}
+	\end{frame}
+
+\subsection{Gagner de l'argent avec le libre}
+	\begin{frame}
+	\begin{itemize}
+		\item Vendre un logiciel libre est difficile : on autorise l'acheteur à le distribuer gratuitement.
+		\item Vendre des services reste possible : support technique, développement d'applications spécifiques\ldots
+		\item Les licences de type BSD permettent une évolution progressive
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Travailler pour le libre}
+		\begin{itemize}
+			\item Rejoindre une SSLL,
+			\item Participer à des programmes comme le Google Summer of Code,
+			\item Travailler directement pour un projet (FSF, Firefox, Haiku, \ldots)
+			\item Donations et "bounties"
+		\end{itemize}
+	\end{frame}
+
+\subsection{Le libre en dehors du logiciel}
+	\begin{frame}
+		Certains projets libres ne sont pas des logiciels
+		\begin{itemize}
+			\item Wikipedia
+			\item Open Cola, Free Beer
+			\item Touchbook, matériel libre
+		\end{itemize}
+	\end{frame}
+
+\subsection{L'avenir du logiciel libre}
+
+\begin{frame}
+\begin{itemize}
+	\item Un logiciel propriétaire peut devenir libre : Warzone 2100, Firefox, Blender, \ldots
+	\item Un logiciel libre ne peut pas devenir propriétaire : Wine
+	\item Un logiciel libre peut copier et dépasser un logiciel propriétaire : ReactOS, Haiku
+	\item Un logiciel libre ne peut pas disparaitre, en particulier grace à Internet
+	\end{itemize}
+\end{frame}
+
+\section{La communauté du logiciel libre}
+\subsection{Organisation d'un projet}
+	\begin{frame}
+	\begin{itemize}
+		\item Un c\oe{}ur assez réduit, de 3 à 40 développeurs selon le projet
+		\item Beaucoup de contributeurs externes
+		\item Une communauté d'utilisateurs actifs
+		\item Communication essentiellement par Internet dans la plupart des cas
+		\end{itemize}
+	\end{frame}
+\subsection{Les motivations}
+	\begin{frame}
+	\begin{itemize}
+		\item Défi personnel, quête de reconnaissance
+		\item Besoin particulier d'une application
+		\item Publication de "vieux" code pour assurer la survie d'un logiciel
+		\item Partage du savoir (laboratoires de recherche publics)
+		\item Rarement l'argent \ldots
+	\end{itemize}
+	\end{frame}
+\subsection{Comment rejoindre un projet}
+	\begin{frame}
+	\begin{itemize}
+		\item En tant qu'utilisateur : envoyer un rapport de bug ou faire une suggestion
+		\item En tant que développeur : envoyer un "patch"
+		\item Pour entrer dans le c\oe{}ur du projet : co-option par les membres du projet
+		\item Ou bien créer son propre projet\ldots
+	\end{itemize}
+	\end{frame}
+
+\subsection{Le macrocosme du libre}
+	\begin{frame}
+		\begin{itemize}
+			\item Fort couplage entre les projets : noyau linux + outils gnu + Xorg + ... = un système utilisable
+			\item Une séparation assez nette entre logiciels "GPL" et "BSD", mais les deux sont indispensables
+			\item Les "fork" : copie du code source d'un logiciel pour démarrer un nouveau projet. Duplication d'effort inutile, ou source de diversité ? 
+		\end{itemize}
+	\end{frame}
+
+\subsection{Les modes de travail}
+\begin{frame}
+\begin{itemize}
+	\item Les cycles de publication : date ou liste de fonctionnalités, mais rarement les deux
+	\item La maintenance : branches stable et de développement
+	\item Le contrôle de qualité : évaluation par les pairs (plus ils sont nombreux, plus il y a de chance de trouver la faille)
+	\item La distribution : faite par les utilisateurs
+	\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+	\item La communication interne : centralisée (listes de diffusions), en temps décalé (mail plutôt que téléphone), publique
+	\item L'innovation : en général elle vient d'une seule personne. Plus il y a de gens, plus il y a d'idées. La réalisation peut être collective
+	\item La vision à long terme : s'il y a désaccord, on peut "forker" le projet
+\end{itemize}
+\end{frame}
+
+\subsection{Les limites du libre}
+
+\begin{frame}
+\begin{itemize}
+	\item Difficilement applicable au contenu artistique (livres, jeux vidéos, \ldots)
+	\item Complication de la maintenance (si le client modifie le logiciel par rapport à la version connue)
+	\item Éventuelle prolifération des versions et des alternatives pour un même problème
+\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+	\subsection{Les préjugés}
+		\begin{frame}
+			\begin{enumerate}
+				\item "Le libre, c'est des gens qui veulent la fin de Microsoft"
+				\item "Le libre, c'est des informaticiens barbus qui font des logiciels bizarres et le plus souvent inutiles"
+				\item "Le libre, c'est un truc de pirates"
+				\item "Le libre, c'est un truc de communistes"
+				\item "Un logiciel libre est un logiciel gratuit"
+				\item "Un logiciel libre est forcément moins bien que son équivalent commercial"
+			\end{enumerate}
+		\end{frame}
+
+	\subsection{En pratique}
+		\begin{frame}
+			\begin{enumerate}
+				\item Un nouveau modèle économique
+				\item Un changement irréversible
+				\item Une intégration progressive
+				\item Un développement lié à Internet
+			\end{enumerate}
+		\end{frame}
+
+\end{document}

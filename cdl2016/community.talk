@@ -1,0 +1,249 @@
+@ Haiku, un projet libre vu de l'intérieur
+
+Adrien Destugues - www.haiku-os.org
+Capitole du Libre 2016
+
+@ Haiku?
+
+* Système d'exploitation libre
+* Compatible avec BeOS
+* Projet démarré en 2001
+* 33 développeurs membres
+
+@ PulkoMandy
+
+* Contributeur Haiku depuis 2009
+* Mentor GSoC et GCI
+* Développeur à plein temps pour Haiku
+pendant 1 an
+
+
+@ Mais au fait, c'est quoi un projet libre?
+
+Au minimum:
+
+* Du code
+* Une license
+* Un développeur (au moins)
+* Un utilisateur (au moins)
+
+@ Haiku en chiffres
+
+* 6 millions de lignes de code
+* License MIT
+* Une trentaine de développeurs
+* Pas de comptage des utilisateurs
+
+@ Organisation:
+ * Un projet (www.haiku-os.org)
+ * Deux associations (Haiku, Inc et HSA)
+ * Une communauté
+
+@ Localisation
+* Allemagne, France, USA, Nouvelle Zélande, …
+* Traductions:
+  ** 40 langues en cours (y compris l'Esperanto)
+  ** 30 à peu près complètes
+
+
+
+
+@ Communauté
+  * Utilisateurs
+  ** Nombre inconnu!
+  * Rapporteur de bugs
+  * Forums, mailing lists,
+	canaux IRC ou salons XMPP
+  * HUGs locaux (par pays)
+  * Autres sites web
+    ** UBIX, IsComputerOn, BeBytes,…
+  * Traductions
+  * Support utilisateur, entraide
+  * Présence à des conférences et évènements
+	autour du logiciel libre
+
+@ Soutiens techniques
+  * Apprentissage du C++ pour aider le projet
+  * Hébergement de machines de build
+    pour l'intégration continue
+  * Développement de nouvelles applications
+  * Contribution de patches pour Haiku
+
+
+
+@ Haiku, Inc
+* Créée en juin 2003 par le fondateur du projet
+* Non-profit 501(c)3 
+  (similaire aux associations loi 1901, aux US)
+* Objectif: séparer les fonds projet
+de son compte en banque personnel
+* Gestion des finances
+* Détentrice du copyright sur une partie du code
+** au choix des développeurs
+* Détentrice des marques déposées
+* "représentant légal" du projet
+* Pas d'intervention sur les décisions techniques
+
+@ Fonctionnement
+
+* Pas d'adhésion payante
+* Seulement 6 membres
+** Dont 4 sont également dévelopeurs
+* Décisions par vote
+
+@ Revenus
+
+* Dons
+* Ventes de goodies et de CDs
+* Goodsearch
+* Google Code-In et Google Summer of Code
+
+@ Dépenses
+* Infrastructure du projet
+** Hébergement web, git, etc.
+** 1 serveur dédié avec tous les services (en Allemagne)
+** 1 hébergement web seulement servant de mirroir aux US
+** Noms de domaines et certificats SSL
+* Conférences et coding sprints
+** Frais de déplacement
+** Flyers
+** Contraintes: dépenses raisonables,
+** rapport publié sur le site de Haiku
+* Contrats avec les dévelopeurs
+** Plutôt mal payé
+* Achat de matériel pour le développement de drivers
+
+@ Difficultés
+
+Manque de transparence
+* Discussions par mails privés
+* Données confidentielles
+** Données bancaires
+** Informations personelles
+
+Lenteur des décisions
+* Manque de temps des membres
+* Pas de renouvellement périodique
+* Difficulté à réunir le bureau
+
+@ Haiku Support Association
+* Groupement d'utilisateurs
+* Adhésion payante (36 euros par an)
+* 19 membres
+* Organisation de la conférence BeGeistert
+et du coding sprint
+
+
+
+
+
+@ Le projet Haiku
+* Entité informelle
+* Développeurs ayant accès au git
+* Décisions prises par concensus
+* … ou par vote si aucun compromis n'est trouvé
+
+@ Workflow
+* Dépot Git
+* Suivi de bugs et de patches sur Trac
+** Pas toujours efficace…
+* Mailing lists et canaux IRC pour les discussions
+
+@ Devenir contributeur
+
+* Comprendre "la Voie de Haiku"
+* Contribuer
+** Patches, rapports de bugs, support utilisateur
+* Gagner la confiance des contributeurs
+* Proposition sur la mailing list
+** Décision par concensus
+
+@ Dysfonctionnements
+
+C'est celui qui code qui décide
+* Décision par vote inutile s'il n'y a personne
+  pour la mettre en pratique
+Manque de contributeurs dans tous les domaines
+* pas seulement des codeurs!
+Organisation complexe
+Difficulté à prendre des décisions
+* Discussions sans fin
+
+@ Les projets satellites:
+* haikuports,
+* haikudepot server,
+* haikuarchives,
+* 3rd party apps
+
+@ HaikuArchives
+
+* Abandonware pour BeOS
+* Pas de mainteneurs
+* Projets développés pendant le GCI
+
+@ HaikuPorts
+
+* "ports" (comme pour les BSD)
+* écriture de recettes: contribution assez facile
+** (pas toujours besoin de parler le C++)
+
+
+@ HaikuDepot server
+
+Interface web pour la gestion des paquets
+* Ajout de captures d'écran,
+* Traduction des descriptions,
+* Notation des paquets
+* Service web pour le client natif
+
+
+@ Les contributions upstream:
+* Trac (suivi de bugs et demandes d'amélioration)
+** Plusieurs "hacks" (plug-ins)
+** Composants hiérarchisés, outils de documnetation…
+* Pootle (traductions en ligne)
+** Support des fichiers "catalogs"
+   pour les traductions de Haiku
+* libsolv (résolution de dépendances pour les paquets)
+** Utilisé par OpenSUSE
+* clang, cmake, SDL, …
+** Nombreux projets, portés principalement par HaikuPorts
+* Les forks: gcc, glibc, mesa, ffmpeg
+** Anciennes versions compatibles avec BeOS
+** Versions récentes disponibles en parallèle
+* webkit (moteur HTML/CSS/Javadscript)
+** Trop rapide pour nous…
+
+@ Les évènements
+* BeGeistert (organisé par HSA)
+** Conférence et Coding Sprint
+* GSoC et GCI
+** Encadrement de lycéens et d'étudiants
+** Initiation à l'open source
+** Financé par Google
+* Participation à d'autres évènements
+** Capitole du Libre
+** FOSDEM
+** Ohio Linux Fest
+** ...
+
+
+
+
+@ Projets commerciaux
+* TuneTracker Systems
+* iZCorp
+
+@ Distributions et forks
+* Restrictions sur l'utilisation de la marque Haiku
+* Mais le code est libre
+
+TiltOS
+* Serveur X, applications Qt et GTK
+
+Senryu
+* Distribution avec applications préinstallées
+
+Discover Haiku
+* Applications préinstallées
+* Démonstrateur pour les produits TuneTracker Systems

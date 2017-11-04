@@ -1,0 +1,217 @@
+@designsize=800x600
+@canvascolour=#336699
+
+@ Le système d'exploitation Haiku
+PulkoMandy - Capitole du Libre 2014
+
+@!logo.png
+
+@ Bienvenue !
+
+Adrien Destugues \/ PulkoMandy
+Utilisateur de BeOS depuis 2004
+Contributeur Haiku depuis 2009 (premier patch en 2008)
+Employé à plein temps par Haiku, inc depuis 2013
+
+@ Au fait, c'est quoi Haiku ?
+
+* Un clone libre de BeOS
+* Un système d'exploitation pour les ordinateurs de bureau
+** Pas de serveurs, pas d'ordiphones,
+^  pas de systèmes embarqués
+** ... pour le moment !
+* License MIT - Autorise la réutilisation du code
+^ par un éventuel projet non libre.
+
+
+@ Un bref historique
+
+Août 2001 - OpenBeOS
+* "Ok, let's start"
+2003 - Création de Haiku, inc
+2004 - OpenBeOS devient Haiku
+2005 - Tracker fonctionnel
+Septembre 2009 - Haiku R1 Alpha 1
+* Haiku peut se compiler lui-même
+Mai 2010 - Alpha 2
+Juin 2011 - Alpha 3
+* Système hybride gcc2 et gcc4
+Novembre 2012 - Alpha 4
+Septembre 2013 - Gestionnaire de paquets
+Novembre 2014 - En route pour R1 beta 1!
+
+
+@ Concepts principaux
+
+Un système moderne
+* API orientée objet en C++
+* Fonctionnement multithread
+* Utilisation d'attributs de fichiers étendus
+
+Des applications intégrées
+* Utilisation du drag'n'drop
+* Scripting et shell
+* Stack and tile
+
+Une prise en main facile
+* Tout est accessible graphiquement
+* Tout est accessible en ligne de commande
+* Une API unifiée et découpée en "Kits"
+
+@ Apperçu du système
+
+Le code de Haiku est principalement en C++
+^ (y compris le noyau)
+* Un langage un peu plus haut niveau que le C,
+^ mais adapté à la programmation d'un OS
+* La plupart des fonctionalités ne sont pas disponibles en C
+* API POSIX disponible (mais encore incomplète)
+* Découpage en "Kits" (API) et serveurs (démons)
+
+@ Kits et serveurs
+	Application Kit et registrar (gestion des applications)
+:Application Kit
+	Interface Kit et app_server (gestion de l'affichage)
+:Interface Kit
+	Storage Kit (stockage de masse)
+:Storage Kit
+	Translation Kit (conversion de formats de données)
+:Translation Kit
+	Package Kit (gestionnaire de paquets)
+:Package Kit
+	Kernel Kit, Device Kit (noyau et pilotes de périphériques)
+:Kernel Kit
+	Network Kit, Mail Kit (accès au réseau)
+:Network Kit
+	Media Kit, Game Kit, MIDI Kit, OpenGL Kit (son et vidéo)
+:Media Kit
+	Support Kit (fonctions transversales)
+:Support Kit
+
+
+@ Application Kit
+
+La programation multithread au cœur du système
+
+BLooper: un thread avec une boucle de gestion de messages
+BHandler: objet qui traite les messages (MessageReceived)
+
+BMessage: un... message!
+* Identifiant (entier 32 bits)
+* Conteneur générique
+* Accès par clés
+^ (chaîne de caractère + identifiant de type + index)
+* Valeurs: types primitifs, messages imbriqués,
+^ pointeurs, données brutes
+
+@ Applications
+
+BApplication: le looper principal d'une application
+* Identifiée par un type MIME
+* Gestion des arguments et des fichiers passés
+** en ligne de commande
+** par glisser-déposer
+
+BRoster: registre des applications (en cours d'exécution ou pas)
+* Lister les documents récents
+* Trouver et lancer l'application appropriée pour un fichier donné
+* Lancer une application à partir de son type MIME
+* Envoyer un message à toutes les applications
+^ ou à une application spécifique
+
+@ Scripting
+
+Interface standardisée pour contrôler les applications
+* Enumération des propriétés disponibles
+* Manipulation de ces propriétés via des actions
+** EXECUTE, GET, SET, CREATE, DELETE
+* Accessible en ligne de commande avec l'outil "hey"
+* Préfigure Binder qui est utilisé par Android
+
+@ Interface Kit
+
+L'"Interface Kit" regroupe les APIs pour l'interface graphique.
+
+Chaque fenêtre (BWindow) est un BLooper
+(avec son thread dédié).
+Chaque vue (BView) est un BHandler attaché à la fenêtre
+
+Les traitements longs sont faits dans le thread de l'application
+(BApplication). Les fenêtres sont donc toujours réactives.
+
+Attention toutefois au problèmes
+de synchronisation entre threads.
+
+@ app_server
+
+L'affichage est géré par app_server qui communique avec les
+drivers vidéos via les accelerants.
+
+* Rendu graphique côté serveur, donc pas de gel
+^ de la boucle d'évènements de la fenêtre
+* Transparence réseau (remote_app_server)
+
+
+@ Storage Kit
+
+Gestion des fichiers...
+* Attributs étendus
+** typés et sans limite de taille pour BFS
+** Utilisés pour stocker données et métadonnées
+** Peuvent être indexés et requêtés
+* Surveillance de nœeuds (node monitoring)
+** Recevoir une notification à chaque changement
+^ d'un fichier ou dossier
+
+Exemples de métadonnées:
+* Courriel (sujet, expéditeur, …)
+* Contacts (nom, adresse, …)
+* Musique (auteur, titre, album, …)
+* Signature MIME des applications, icônes
+* Taille et position de fenêtres
+
+@ BArchivable
+
+Stocker l'état d'un objet dans un BMessage
+et reconstruire un clone de cet objet
+* À partir d'une archive stockée dans un fichier
+* Ou reçue par le réseau
+* Ou venant d'une autre application
+
+Exemples d'utilisation
+* Glisser-déposer
+* Replicants (insérer une vue d'une application
+^ dans une autre)
+* Conception d'interface graphiques
+
+
+@ Translation Kit
+Conversion de formats de données
+* Négociation d'un format commun
+* Chargement du traducteur sous forme d'add-on
+* API standard permettant l'ajout de nouveaux formats
+^ sans modifier les applications
+
+Exemples d'utilisation
+* Enregistrer une image
+* Acquérir une image
+** Depuis un fichier, une webcam, un scanner
+* Enregistrer et lire du texte formatté
+** BTextView <> RTF, DOC, HTML, …
+
+
+@ Package Kit
+
+Gestion de paquets sans installation
+* Sous forme d'un système de fichiers virtuel
+* Les paquets sont montés et non extraits
+* Installation et désinstallation facile
+^ Il faut simplement placer le fichier au bon endroit
+* Utilisation du cache de fichiers du système
+^ pour un accès rapide
+
+@ Pour en savoir plus...
+http:\/\/api.haiku-os.org - The Haiku Book
+http:\/\/www.haiku-os.org - Site de Haiku
+irc:\/\/freenode.net\/#haiku - Canal IRC
+Passez nous voir sur notre stand au village!

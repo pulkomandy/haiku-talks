@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.07pt}
+\select@language {french}
+\beamer@sectionintoc {1}{Concepts and ideas}{3}{0}{1}
+\beamer@sectionintoc {2}{Inner workings}{4}{0}{2}
+\beamer@sectionintoc {3}{How to use it in your app}{5}{0}{3}
+\beamer@sectionintoc {4}{Work still needed}{9}{0}{4}

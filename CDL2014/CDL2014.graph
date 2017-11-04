@@ -1,0 +1,18 @@
+@0	-280	Le système d'exploitation Haiku
+@160	0	!logo.png
+@-160	200	Bienvenue !
+@-160	720	Au fait, c'est quoi Haiku ?
+@-40	1280	Un bref historique
+@-80	2200	Concepts principaux
+@-280	2880	Apperçu du système
+@-200	3520	Kits et serveurs
+@-4720	3520	Application Kit
+@-4840	4360	Applications
+@-4800	5080	Scripting
+@-3040	3480	Interface Kit
+@-2960	4240	app_server
+@-1680	3520	Storage Kit
+@-1680	4400	BArchivable
+@1080	3520	Translation Kit
+@2520	3600	Package Kit
+@-120	4480	Pour en savoir plus...
