@@ -1,0 +1,387 @@
+@designsize=1024x768
+
+@ Haiku, 16 ans de galère!
+
+Adrien Destugues \/ PulkoMandy
+Alchimie 2017
+
+!cake.jpg
+
+@ À propos de Haiku
+
+!1
+* Projet créé en 2001
+* Système d'exploitation
+* Logiciel libre
+* Clone de BeOS
+
+!beos.png
+
+!2
+* Système pour les ordinateurs de bureau
+* Développé principalement par des bénévoles
+* Toujours en version alpha
+** Pas de nouvelle version depuis 2012
+
+!desktop.png
+
+@ 16 ans de Galère
+Faire un point sur l'avancée du projet
+...et sur les choses qui n'avancent pas!
+
+(on parlera quand même des choses qui marchent)
+
+!galere.jpg
+
+@ Quels sont les problèmes?
+
+* Organisation interne
+* Accueil de nouveaux contributeurs
+* La communauté autour du projet
+* Administration système
+* Gestion du budget
+* Collaboration avec d'autres projets
+
+!shadok.jpg
+
+@ Organisation interne
+
+!1
+Équipe de développeurs
+* Beaucoup d'indépendance
+** "herding cats" ("dressage de chats")
+
+!herdingcats.jpg
+
+!2
+* Tentatives de direction "classique"
+** planning, rapports hebdomadaires, …
+** … vous vous attendiez à quoi?
+
+* Les développeurs contribuent sur leur temps libre,
+^ et pour leur propre plaisir
+
+Difficile de diriger le projet.
+
+!dilbert.png
+
+!3
+Processus de décision
+* Officiellement, Haiku est une "méritocratie"
+** L'autorité s'obtient en gagnant le respect des autres
+** Décisions prises par concensus entre tous les développeurs
+^ de plus en plus difficile quand il y a trop de monde
+* Décisions par vote
+** Uniquement si un concensus ne peut être atteint
+* Discussions ouvertes (mailing list publique)
+** Interventions peu pertinentes de gens extérieurs au projet
+
+* En pratique, c'est celui qui écrit le code qui décide
+** Parfois il vaut mieux implémenter que discuter!
+
+!4
+Bus factor
+* "Le projet survit-il si N développeurs sont écrasés par un bus ?"
+* Peut-être déjà trop tard pour Haiku
+** Contributeurs qui quittent le projet
+** Heureusement toujours joignables
+
+!bus.jpg
+
+!5
+* Efforts de documentation insuffisants
+** Réflexe à prendre: convertir les messages sur la mailing list
+^ en documentation technique
+
+!merlin.gif
+
+!6
+Revue de code
+
+Tous les changements sont relus après-coup,
+^ alors qu'ils sont déjà intégrés
+** Difficile de traiter les gros changements
+** Pas de garantie que le code soit effectivement relu
+** Frustration quand il faut réécrire du code déjà intégré
+
+Projet de passage à Gerrit, relecture avant intégration
+
+!6
+Ce qui fonctionne :
+* Code propre et lisible, donc maintenable
+* Communauté et équipe accueillante
+** à condition d'être un minimum motivé pour participer…
+
+@ Accueil de contributeurs
+
+!1
+
+Activité du projet en baisse
+Les développeurs passent à autre chose
+
+Accueillir des nouveaux n'est pas facile.
+* Comprendre but du projet
+* Travailler avec l'équipe existante
+* Être indépendant
+
+!2
+Par ou commencer?
+* Contributeurs ne sachant pas quoi faire
+* Longue liste de problèmes
+* Utiliser Haiku et voir par soi-même
+
+!octopus.jpg
+
+!3
+Ce qui fonctionne :
+* "Tâches faciles"
+* Documentation pour compiler
+^ et modifier Haiku
+
+Le Google Code-In aide à améliorer les choses
+(documentation utilisable par des 13-17 ans)
+
+!wallace.jpg
+
+!4
+Processus de recrutement inefficace
+* Demande beaucoup d'investissement
+^ des nouveaux contributeurs
+* Permet de maintenir le niveau et la cohésion de l'équipe
+
+Co-optation par les développeurs actifs
+Accepté si pas de réponse négative pendant 15 jours
+
+* Difficile de refuser quelqu'un sans le vexer
+^ après que la proposition a été faite
+* Encore plus difficile une fois qu'elle a été acceptée
+^ (3 cas, dont 1 s'est effectivement terminé par une exclusion)
+
+!5
+Gestion des contributions externes
+* Certains patches pas mergés depuis 6 ou 7 ans
+** Premier retour rapide avec demandes de modifications
+* Faire accepter un patch demande plus de travail que prévu
+* Respect strict des règles de formatage du code
+** Pénible mais indispensable
+
+!678
+Participation au Google Code-In et Summer of Code
+
+!6
+Summer of Code
+* Pour les étudiants
+* Prend le format d'un stage
+* Encadré par Haiku, payé par Google
+* Travail à distance comme les autres contributeurs
+
+!7
+Google Code-In
+* Pour les 13-17 ans
+* Concours de programmation et autre choses
+* Découverte du logiciel libre
+
+!8
+Beaucoup d'efforts pour ces deux programmes
+* Encadrement des participants
+* Préparation des projets
+
+Retours pas évidents
+* Beaucoup de participants disparaissent
+^ dès la fin du programme
+
+# mais quelques-uns restent
+
+@ Gestion de la communauté
+
+!1
+Pas seulement les contributeurs
+Communauté: forums, mailing lists, canaux IRC
+N'importe qui peut entrer et participer
+* Ouvert à tous
+* Pas toujours une bonne chose
+
+!2
+Quelques exemples
+* Faux rapports de bugs
+** "Haiku a effacé mon disque dur"
+** Sans détails techniques malgré nos demandes
+** Plusieurs fois sous des noms différents
+* Fausses contributions
+** Annonce fracassante sur la mailing list
+# (exemple: "j'ai remplacé le noyau de Haiku par Linux")
+** Jamais de code publié
+** Résultat: beaucoup de bruit pour rien
+* Critiques non constructive et systématiques
+
+!3
+Ceux qui veulent réorienter le projet
+* À chaque version de macOS :
+** Une vague d'utilisateurs espérant retrouver leurs habitudes
+
+* Un exemple sur l'apparence graphique de Haiku
+** Demande de faire plus de dégradés et d'arrondis
+** Demande de faire plus de flat design
+^ quelques années plus tard
+* Le choix de Haiku est donc un bon compromis!
+
+Acceptable, s'il y a des efforts pour faire les changements.
+
+!4
+Ce qui fonctionne :
+* Utilisateurs frustrés qui finissent par
+^ apprendre le C++ pour corriger eux-mêmes les bugs
+* Rapports de bugs de qualité
+^ et avec un bon suivi par le rapporteur
+* Communauté accueillante
+** Support technique
+** Entraide
+
+!madhacker.gif
+
+# La majorité des problèmes vient d'un très petit nombre de personnes
+
+@ Administration Système
+!1
+Garder les serveurs en état de marche…
+* Précédement hébergé sur sourceforge (CVS)
+^ puis BerliOS (SVN)
+** Problèmes de disque dur plein régulièrement
+* Solution : l'auto-hébergement
+** Fonctionne bien... tant qu'il y a un sysadmin!
+
+# encore un travail ingrat
+
+!2
+Rôle difficile à partager
+* Données sensibles (mots de passe, clés privées)
+Mais indispensable de le faire
+* Encore le "bus factor"
+* Trop de travail pour une seule personne
+** Demande de toujours plus de services
+** Application de traduction, revue de commits, site, forum, …
+
+!3
+"Redémarrage en cours…"
+* Retrait de l'administrateur initial
+* Reprise tant bien que mal par une nouvelle équipe
+* Migration progressive vers un nouveau serveur
+* Nettoyage, mise au propre, modernisation
+
+!jurassic-park.jpeg
+
+@ Administratif
+!1
+Haiku, inc, association "support" du projet
+* Fonctionnement opaque
+* Travail peu gratifiant
+* Fonctionnemnt inhabituel
+** Pas d'ingérence dans les décisions techniques
+** Laisse aux développeurs leur indépendance
+** S'assure que l'argent ne donne pas le pouvoir
+
+!2
+* Manque de renouvellement des membres
+* Lenteur des décisions
+* Données sensibles
+** compte en banque
+** informations personelles des développeurs sous contrat
+
+Difficile d'avoir un fonctionnement ouvert et communautaire
+
+@ Fear of release
+
+!1
+"ça sortira quand ça sera prêt"
+Projet créé en 2001, première version "alpha" en 2009
+Pas de nouvelle version depuis 2012
+* Exigence de qualité très (trop?) haute
+* Ambitions professionelles, mais sans les moyens
+* Support de versions stables qui demande des efforts
+#** Beaucoup de projets ne le font pas!
+
+!dragons.jpg
+
+!2
+Une release, pour quoi faire?
+* Il est possible d'utiliser les "nightly builds"
+** quand ils fonctionnent!
+* Problèmes de compatibilité d'une version à l'autre
+* Fonctionnalités expérimentales
+* Régressions
+
+!3
+"What's the difference?"
+* Release ou pas, c'est le même code et la même équipe!
+* Un peu d'attention pour corriger les bugs
+** mais ça devrait toujours être le cas!
+* Pour la publicité
+** Mais il faut être au niveau pour ne pas décevoir!
+
+!wargames.png
+
+@ Communication
+!1
+Site web
+* Rapport d'activité mensuel
+* Articles techniques
+* Messages de blog des développeurs (selon l'humeur)
+* Forum de discussion
+
+!tron.jpg
+
+!2
+Pas grand chose d'autre
+* Présence timide sur les réseaux sociaux
+** Des gens surpris d'apprendre que le projet existe toujours
+* Présence à quelques conférences
+** Uniquement en France, ou presque
+** Parfois, même pas par des membres du projet
+
+!3
+Résultat: les autres communiquent à notre place
+* Pas toujours sur les sujets les plus intéressants à notre avis
+* Pas toujours aux moments les plus pertinents
+** Revue vidéo de Haiku
+^ où le navigateur web n'affiche aucune page
+#** (bon ok, en vrai il est souvent cassé)
+
+!superman.jpg
+
+@Autres projets
+
+Pas toujours pris au sérieux
+* Abiword
+
+Pas possible de tout faire nous-mêmes
+* WebKit, VLC, Transmission
+
+Certains projets sont plus accueillants
+* NetSurf, SDL2, git, Mesa
+
+@Conclusion
+
+Le projet a survécu à beaucoup de choses
+La patience est indispensable
+Ne pas oublier de s'amuser!
+
+!funky.jpg
+
+@Crédits photos
+!1
+Cake - Worms World Party, (c) 2001 Team 17
+Galérien - Asterix, © 2017 GOSCINNY - UDERZO
+Devise Shadok - (c) 1968 Jacques Rouxel
+Les Aristochats - (c) 1970 Disney
+Dilbert - (c) 1989-2017 Scott Adams
+The Magical School Bus - (c) 2003-2006 Joanna Cole, Bruce Degan
+Merlin l'enchanteur - (c) 1963 Disney
+!2
+Octopus - (c) 19?? Tex Avery
+Wallace & Gromit - (c) 1989-2010 Nick Park
+Jurrasic Park - (c) 1993 Universal Pictures
+Monty Python and the Holy Grail - (c) 1975 The Monty Python
+Wargames - (c) 1983 Metro-Goldwyn-Mayer, United Artists
+Tron - (c) 1982 Disney
+Lois & Clark - (c) 1993-1997 ABC
+Funky Cops - (c) 2002 Thierry Sapyn
