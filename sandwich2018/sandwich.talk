@@ -1,0 +1,514 @@
+@designsize=1024x768
+@canvascolour=#336699
+
+@ Le système d'exploitation Haiku
+
+Adrien Destugues \/ PulkoMandy
+Sandwich Techno @ Viveris - Juin 2018
+
+@ Bienvenue !
+
+@ Historique
+
+@!bttf.jpg
+
+@Apple, 1985
+
+!1
+Steve Jobs est viré de Apple
+car les ventes de Macintosh ne sont pas aux niveaux attendus
+Il part avec une partie des ingénieurs et va fonder NeXT
+	(on en reparlera).
+
+!2
+Jean Louis Gassée prend la tête de la division Macintosh:
+* Macintosh II et SE (machines évolutives),
+* Macintosh portable,
+* Début du travail sur l'Apple Newton
+- (précurseur de l'iPod et de l'iPhone)
+
+
+@!homealone.jpg
+
+@Apple, 1990
+
+Jean-Louis Gassée est viré de Apple
+car les ventes de Macintosh ne sont pas aux niveaux attendus
+Il part avec une partie des ingénieurs et va fonder Be.
+
+@La micro-informatique en 1990
+Contexte:
+
+Débuts du CD-ROM,
+On commence à parler de multimédia mais…
+
+@Macintosh
+!system602.gif
+
+
+
+
+
+
+
+
+Pas de multitâche, pas de couleur
+
+@Atari TOS
+
+
+
+
+
+
+
+
+
+!tos162.png
+
+Pas de multitâche
+
+@Windows 3.0
+!win30.png
+
+
+
+
+
+
+
+
+
+
+
+
+Multitâche coopératif
+Commence juste à être crédible
+
+@AmigaOS
+!workbench20.gif
+
+
+
+
+
+
+
+
+
+
+
+
+
+Multitâche préemtptif, pas de protection mémoire
+Toolkit graphique incomplet
+
+@NeXTStep
+!2
+!nextstep.png
+!1
+
+
+
+
+
+Multitâche préemptif, protection mémoire
+API orientée objet (en Objective-C)
+Pas de couleur, mais haute résolution
+
+
+@ Be inc
+
+Objectif: créer un système moderne pour le "multimédia"
+et l'informatique personnelle
+
+Inspiré par l'existant: Macintosh, AmigaOS, UNIX, NeXT
+
+Logiciel et matériel (comme tout le monde, sauf Microsoft\/PC)
+
+@ La BeBox
+
+2 CPU Hobbit + 3 DSP (pour le son, l'image, le modem)
+	Plus flexible et moins cher que des "custom chips"
+	(comme sur Amiga),
+	Plus performant qu'une architecture "tout logiciel"
+
+@ BeOS
+
+Un système moderne:
+	- multitâche préemptif,
+	- compatible POSIX,
+	- protection mémoire
+Utilisation de C++ pour les APIs du système
+	(language tout récent à l'époque)
+
+@ L'abandon du Hobbit
+
+Début 1994:
+AT&T stoppe le développement du Hobbit
+
+Passage au PowerPC comme Apple.
+Abandon des DSP (finalement peu pratiques avec un système
+multitâche).
+
+Dans un premier temps, Be construit son propre matériel
+basé sur PReP (architecture standard définie par IBM).
+
+Le but est de vendre l'OS, mais personne ne proposait
+de machine appropriée!
+
+Fin 1995: premières démonstrations du système
+(juste après la sortie de Windows 95).
+
+@ Pendant ce temps chez Apple...
+
+Pendant ce temps chez Apple, ouverture de MacOS à d'autres
+constructeurs avec PReP et CHRP.
+
+On a donc d'un seul coup plusieurs fabricants de machines
+PowerPC!
+
+Août 1996: BeOS fonctionne sur les machines Power Computing
+et les PowerMac d'Apple (suite à un malentendu avec les
+organisateurs de l'Apple Developer Conference). Des
+négociations sont en cours avec Apple, qui veut acheter
+BeOS pour le Macintosh.
+
+Décembre 1996: Power Computing vendra des machines
+avec BeOS préinstallé.
+
+@ Le rachat de NeXT
+
+Finalement, Apple achète NeXT début 1997.
+C'est le retour de Steve Jobs chez Apple.
+
+Février 1997: fin de la fabrication de la BeBox.
+Be devient uniquement vendeur de BeOS et commence
+à travailler sur une version x86 avec l'aide d'Intel.
+
+Août 1997: Apple met un terme aux "clones" et à CHRP
+(mais Be l'avait vu venir)
+
+@ La version x86
+
+Septembre 1997: BeOS est repositionné comme
+"Le système pour le multimedia". Objectif:
+cohabiter avec Windows, pas le remplacer.
+
+Décembre 1997: première diffusion de la version x86.
+
+@ Hitachi Flora Prius
+
+Novembre 1998: Hitachi annonce le Flora Prius, une machine
+qui sera vendue avec Windows et BeOS en double boot.
+
+Mars 1999: les machines sont finalement livrées avec BeOS
+installé… mais invisible! Le contrat de licence OEM de
+Microsoft ne permet pas de l'installer en double boot avec
+un autre système.
+
+@ BeIA
+
+Dans ces conditions, il n'y a plus de business model pour Be
+sur le marché du PC.
+
+Septembre 1999: Be se lance sur le marché des
+"Internet Applicances" (l'idée de départ est celle de l'IoT
+aujourd'hui).
+
+Début 2000: annonce de BeIA qui devient le but principal de Be.
+Il s'agit un peu d'un ancêtre du Chromebook.
+Libération des sources du Traker et de la DeskBar.
+
+@ La fin de Be
+
+BeIA est disponible sur quelques machines, mais ce n'est pas
+un grand succès. Be tente une autre reconversion sur le marché
+des chaînes stéréo connectées, mais finalement l'entreprise
+est rachetée par Palm.
+
+Une partie de la techno de Be est intégrée dans Cobalt, un
+projet d'OS pour PDAs qui ne sera jamais uilisé par personne.
+
+Une partie des employés vont alors rejoindre Android.
+Aujourd'hui, une grande partie de la même équipe travaille
+chez Google sur Zircon.
+
+@ Haiku - Historique
+
+Suite à l'abandon de BeOS, les développeurs d'applications
+s'interrogent sur la suite à donner. Rapidement, l'idée de
+réécrire le système est lancée.
+
+Le projet est ambitieux, mais le travail commence par
+quelques morceaux "faciles". En 2002, le premier
+composant de Haiku est livré: la fenêtre de configuration
+des écrans de veille!
+
+@ Les débuts
+
+Réutilisation de code existant:
+- Tracker et DeskBar de BeOS
+- Mail Daemon Replacement
+
+Patches pour BeOS en attendant:
+- Support des CPU avec SSE2
+  (provoquent un crash du Kernel)
+- "RAM Limiting Bootloader"
+  pour les machines avec plus de 1Go de RAM
+- Nouveaux pilotes (USB, cartes graphiques Radeon)
+
+@ Premiers accomplissements
+
+Juillet 2005: Haiku peut démarrer "jusqu'au bureau"
+Avril 2008: Haiku peut se compiler lui-même
+Janvier 2009: support de gcc4
+Septembre 2009: la version Alpha 1
+
+@ Maturité
+
+Versions suivantes en 2010, 2011, 2012:
+- En 2010, un sondage pour réévaluer le contenu de la version 1
+- Support du wifi
+- Intégration d'un navigateur web (basé sur WebKit)
+- Début du travail sur le gestionnaire de paquets
+
+Pas d'autre version depuis 2012. Bientôt une Beta 1?
+
+@ Autres projets
+!1
+Tout le monde n'adhère pas à l'idée d'un nouvel OS
+
+Zeta
+- YellowTab (entreprise allemande) fournit des versions
+  mises à jour de BeOS. Doute persistant sur la légalité
+  de ce projet (pas de preuve qu'ils avaient le droit
+  d'utiliser les sources de BeOS)
+
+BlueEyedOS
+- Base Linux\/GNU\/X11, API compatible avec BeOS
+- Lesapplications doivent être recompilés
+- Très rapidement fonctionnel
+- Moins intéressant techniquement
+- Sources jamais publiées malgré des promesses
+- Modèle de développement trop fermé
+
+!2
+Cosmoe
+- Similaire à BlueEyedOS, mais utilise les sources de Haiku
+- Resté à l'état de prototype par manque de temps
+
+BeFree, GnuBE, ETK++
+- Un toolkit (type Qt) s'intégrant avec un OS existant
+  (Linux ou Windows)
+- Permettrait de développer pour BeOS mais de quand même
+  atteindre d'autres plateformes
+- Pas vraiment intéressant face à Qt
+
+!3
+beunited.org
+- Une entité pour standardiser les évolutions de BeOS proposées
+- Similaire à POSIX pour UNIX
+- Abandonné lorsque Haiku est le dernier projet actif
+
+@ Objectifs de Haiku
+!1 2
+OS compatible avec BeOS au niveau binaire
+(drivers, applications, etc)
+
+!2
+(plus vraiment pertinent aujourd'hui)
+!3
+Garder l'"esprit" de BeOS: léger, facile à utiliser,
+bien intégré, flexible
+
+Plus vraiment un projet sérieux aujourd'hui
+(on va pas remplacer macOS ni Windows…)
+- Pour la culture technologique et l'expérience
+	(voire l'expérimentation)
+- Pour la "technodiversité"
+
+!4
+Logiciel libre
+
+Partager du code avec BeOS, Zeta ou d'autres
+
+@ Organisation du projet
+!1
+Pas de "leader"
+Décisions par concensus
+	-> Necessité de limiter qui peut prendre part aux discussions
+	-> Co-optation par les membres du projet
+	-> Requis: comprendre "the Haiku way"
+
+Globalement:
+- Faire les choses proprement
+- Ne pas cacher les problèmes, mais faire ce qui est nécessaire
+	pour les résoudre correctement
+- Garder l'esprit de BeOS (simplicité, flexibilité, cohésion)
+!2
+En grande majorité, devs. sur leur temps libre et bénévolement
+
+Exceptions:
+- Contrats (2 mois à 1 an)
+- GSoC
+- "bounties"
+
+@ Financement
+
+Donations par les utilisateurs
+
+Servent à payer les serveurs, rembourser les frais
+pour déplacements à diverses conférences
+(RMLL, Capitole du Libre, ...)
+Organiser des "coding sprints"
+Payer des dévs à plein temps
+
+Dons géré par 2 associations: Haiku inc (US) et HSA (Allemagne)
+
+@ Tech
+
+C++, y compris dans le noyau
+
+Tout réalisé par la même équipe
+	Pas de code "lasagne"
+	(utilisation de libs 3rd party là ou ça fait sens + wrappers)
+
+Découpage en "Kits" (parties de la lib système)
+
+ABI stable pour les drivers et pour les applications
+
+@ Support Kit
+
+Allocation mémoire, chaînes de caractères, locks, listes...
+
+Sérialisation\/déserialisation d'objets
+
+@ Kernel Kit
+
+Primitives de communication bas niveau
+
+Threads, Teams (processus), semaphores, ports (IPC),
+areas (mémoire partagée), images (code partagé)
+
+Gestion de priorités entre les threads
+
+@ Storage Kit
+
+Fichiers, dossiers
+- Rien de spécial jusque là
+
+Resources et attributs
+- Métadonnées associées à un fichier
+- Attributs avec un nom et un type
+- Indexation de certains attributs par le FS
+- Possibilité de faire des requêtes (BDD)
+
+Node monitoring
+- Être notifié des changements sur un fichier
+- Combiné avec les requêtes:
+	mise à jour "en direct" des résultats
+
+@ Application kit
+!1
+Loopers et Handlers
+- La BeBox est une machine SMP
+- Donc utilisation de threads
+- Mais, la programmation avec des threads est pénible
+(partage de mémoire, locks, etc)
+
+Solution: API de passage de messages
+BMessage = un "message" avec un contenu arbitraire
+(clé,type,index => valeur)
+BLooper = un thread
+BHandler = récepteur de messages (associé à un looper)
+
+Les données sont copiées dans un message,
+donc pas besoin d'interblocage.
+!2
+De plus, un message peut être sérialisé, donc:
+- Passage de messages d'une appli à une autre
+- Transparence réseau (passage d'une machine à une autre)
+
+On peut sérialiser n'importe quoi dans un message
+- Envoi d'une fenêtre complète d'une application à une autre
+- Replicants
+!3
+Protocole standardisé pour toutes les applications
+"Scripting": mécanisme de découverte de ce que sait faire
+une application + envoi de messages pour la contrôler
+Applications possibles: automatisation,
+interfaçage d'applis graphiques, lecteur d'écran, …
+
+En général, modèle de programmation évenementiel.
+Chaque thread réagit à des évènements.
+Si besoin de faire un traitement long, démarrage d'un
+thread "worker" dédié
+
+Conséquence: UI toujours réactive
+(même si les traitements sont longs et le CPU chargé)
+
+@ Interface kit
+
+Construire une UI sur la base de l'application kit
+
+BWindow subclass BLooper
+BView subclass BHandler
+
+BControl permet le scripting par défaut (minimaliste).
+Chaque "contrôle" a une valeur associée et peut être "invoqué"
+pour déclencher une action.
+
+évènements transmis sous forme de messages:
+- Mouvements clavier \/ souris
+- Demande de rendu d'une BView
+- Fermeture de la fenêtre ou de l'application
+- …
+
+@ Translation kit
+
+Gestion des formats de fichiers (images, documents texte, ...)
+- API générique de conversion d'un format vers un autre
+- Formats gérés par des add-ons
+- Idée générale: conversion dans un format d'échange
+- Chaque application peut lire et écrire tous les formats
+	y compris ceux qui n'existent pas encore
+
+@ Network Kit
+
+Les bases: sockets, résolution d'adresse, …
+Sockets sécurisés avec SSL de façon transparente
+
+API plus haut niveau pour les protocoles applicatifs
+Pour l'instant, HTTP et Gopher
+- Fonctionnement asynchrone
+- Evènements sous forme de BMessages
+
+@ Media Kit
+
+Gestion de flux et de noeuds "media" 
+- Idée de base: gestion de "trames" temps réel
+- Calcul et ajustement de la latence nécessaire
+  pour faire les traitements assez en avance
+- Surtout pour le son et la vidéo, mais pas que
+
+Exemple: sous-titres
+
+@ Package kit
+!1
+Le petit dernier dans Haiku
+Gestion des logiciels et des mises à jour
+Résolution des dépendances
+
+Compromis entre la facilité de distribution de BeOS
+(décompresse, met le ou tu veux, c'est installé)
+et la facilité d'administration de Linux
+(mises à jour de sécurité automatiques)
+!2
+Solution retenue: packagefs
+- Les paquets ne sont pas extraits
+- La désinstallation est facile, juste supprimer le paquet
+- Modèle transactionnel (retour en arrière possible)
+
+Le noyau lui-même est dans un paquet,
+donc même le bootloader a été impacté!

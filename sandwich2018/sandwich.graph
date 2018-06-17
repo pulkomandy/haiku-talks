@@ -1,0 +1,46 @@
+@40	-1040	Le système d'exploitation Haiku
+@280	-720	Bienvenue !
+@320	240	Historique
+@-40	760	!bttf.jpg
+@1440	960	Apple, 1985
+@40	1640	!homealone.jpg
+@1400	1760	Apple, 1990
+@160	2533	La micro-informatique en 1990
+@1320	2400	Macintosh
++60	120	system602.gif
+@2160	2400	Atari TOS
++60	100	tos162.png
+@3000	2320	Windows 3.0
++60	120	win30.png
+@3840	2360	AmigaOS
++140	140	workbench20.gif
+@4960	2320	NeXTStep
++20	160	nextstep.png
+@5000	3560	Be inc
+@4960	4120	La BeBox
+@5040	4640	BeOS
+@4840	5200	L'abandon du Hobbit
+@4880	6160	Pendant ce temps chez Apple...
+@5040	7080	Le rachat de NeXT
+@5120	7800	La version x86
+@5080	8320	Hitachi Flora Prius
+@5040	9000	BeIA
+@5080	9960	La fin de Be
+@6520	10040	Haiku - Historique
+@7720	11760	Les débuts
+@7880	12600	Premiers accomplissements
+@7680	13200	Maturité
+@7680	9880	Autres projets
+@7600	10880	Objectifs de Haiku
+@7440	13960	Organisation du projet
+@9240	14000	Financement
+@7480	14760	Tech
+@7440	15840	Support Kit
+@8800	15880	Kernel Kit
+@12800	16120	Storage Kit
+@10160	15880	Application kit
+@11480	15880	Interface kit
+@13960	16120	Translation kit
+@16640	16080	Network Kit
+@15360	16080	Media Kit
+@18040	16160	Package kit
