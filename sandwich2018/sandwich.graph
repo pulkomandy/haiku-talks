@@ -23,7 +23,7 @@
 @4880	6160	Pendant ce temps chez Apple...
 @5040	7080	Le rachat de NeXT
 @5120	7800	La version x86
-@5080	8320	Hitachi Flora Prius
+@5040	8400	Hitachi Flora Prius
 @5040	9000	BeIA
 @5080	9960	La fin de Be
 @6520	10040	Haiku - Historique
@@ -32,15 +32,40 @@
 @7680	13200	Maturité
 @7680	9880	Autres projets
 @7600	10880	Objectifs de Haiku
-@7440	13960	Organisation du projet
-@9240	14000	Financement
-@7480	14760	Tech
-@7440	15840	Support Kit
-@8800	15880	Kernel Kit
-@12800	16120	Storage Kit
-@10160	15880	Application kit
-@11480	15880	Interface kit
-@13960	16120	Translation kit
-@16640	16080	Network Kit
-@15360	16080	Media Kit
-@18040	16160	Package kit
+@13584	15776	Organisation du projet
+@13600	14080	Financement
+@7000	13880	Concepts principaux
+@6920	14880	Apperçu du système
+@6800	15640	Kits et serveurs
+@5960	17120	Application Kit
+@5840	17760	Applications
+@5880	18560	Scripting
+@7680	17120	Interface Kit
+@7680	18000	app_server
+@9600	17160	Storage Kit
+@9720	18040	BArchivable
+@4120	17080	Translation Kit
+@11280	17160	Package kit
+@9280	13840	Mais au fait, c'est quoi un projet libre?
+@10840	13920	Haiku en chiffres
+@11960	13960	Organisation:
+@15120	12720	Localisation
+@13800	12920	Communauté
+@15200	13320	Soutiens techniques
+@15240	14120	Haiku, Inc
+@16560	14320	Fonctionnement
+@17480	14360	Revenus
+@18640	14240	Dépenses
+@19960	14320	Difficultés
+@15480	14880	Haiku Support Association
+@13680	15160	Le projet Haiku
+@13720	16520	Workflow
+@13720	17080	Devenir contributeur
+@13760	17800	Dysfonctionnements
+@15360	15760	Les projets satellites:
+@15320	16440	HaikuArchives
+@15200	17080	HaikuPorts
+@15360	17840	HaikuDepot server
+@16520	15640	Les contributions upstream:
+@18040	15640	Les évènements
+@16440	13080	Projets commerciaux

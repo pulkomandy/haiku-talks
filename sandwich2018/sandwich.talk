@@ -366,133 +366,192 @@ Payer des dévs à plein temps
 
 Dons géré par 2 associations: Haiku inc (US) et HSA (Allemagne)
 
-@ Tech
 
-C++, y compris dans le noyau
 
-Tout réalisé par la même équipe
-	Pas de code "lasagne"
-	(utilisation de libs 3rd party là ou ça fait sens + wrappers)
+@ Concepts principaux
 
-Découpage en "Kits" (parties de la lib système)
+Un système moderne
+* API orientée objet en C++
+* Fonctionnement multithread
+* Utilisation d'attributs de fichiers étendus
 
-ABI stable pour les drivers et pour les applications
+Des applications intégrées
+* Utilisation du drag'n'drop
+* Scripting et shell
+* Stack and tile
 
-@ Support Kit
+Une prise en main facile
+* Tout est accessible graphiquement
+* Tout est accessible en ligne de commande
+* Une API unifiée et découpée en "Kits"
 
-Allocation mémoire, chaînes de caractères, locks, listes...
+@ Apperçu du système
 
-Sérialisation\/déserialisation d'objets
+Le code de Haiku est principalement en C++
+^ (y compris le noyau)
+* Un langage un peu plus haut niveau que le C,
+^ mais adapté à la programmation d'un OS
+* La plupart des fonctionalités ne sont pas disponibles en C
+* API POSIX disponible (mais encore incomplète)
+* Découpage en "Kits" (API) et serveurs (démons)
 
-@ Kernel Kit
+@ Kits et serveurs
+	Support Kit (strings, threads, locks, …)
+:Support Kit
+	Application Kit et registrar (gestion des applications)
+:Application Kit
+	Interface Kit et app_server (interface graphique)
+:Interface Kit
+	Storage Kit (stockage, fichiers)
+:Storage Kit
+	Translation Kit (conversion de formats de données)
+:Translation Kit
+	Package Kit (gestionnaire de paquets)
+:Package Kit
+	Kernel Kit, Device Kit (noyau et pilotes de périphériques)
+:Kernel Kit
+	Network Kit, Mail Kit (accès au réseau)
+:Network Kit
+	Media Kit, Game Kit, MIDI Kit, OpenGL Kit (son et vidéo)
+:Media Kit
 
-Primitives de communication bas niveau
 
-Threads, Teams (processus), semaphores, ports (IPC),
-areas (mémoire partagée), images (code partagé)
-
-Gestion de priorités entre les threads
-
-@ Storage Kit
-
-Fichiers, dossiers
-- Rien de spécial jusque là
-
-Resources et attributs
-- Métadonnées associées à un fichier
-- Attributs avec un nom et un type
-- Indexation de certains attributs par le FS
-- Possibilité de faire des requêtes (BDD)
-
-Node monitoring
-- Être notifié des changements sur un fichier
-- Combiné avec les requêtes:
-	mise à jour "en direct" des résultats
-
-@ Application kit
+@ Application Kit
 !1
-Loopers et Handlers
-- La BeBox est une machine SMP
-- Donc utilisation de threads
-- Mais, la programmation avec des threads est pénible
-(partage de mémoire, locks, etc)
+Objectif: faciliter la programmation multithread
+(pour tirer partie de l'architecture SMP de la BeBox)
 
-Solution: API de passage de messages
-BMessage = un "message" avec un contenu arbitraire
-(clé,type,index => valeur)
-BLooper = un thread
-BHandler = récepteur de messages (associé à un looper)
+Problématique: c'est compliqué et piégeux!
 
-Les données sont copiées dans un message,
-donc pas besoin d'interblocage.
+Solution: une API de passage de messages qui évite
+le partage de données
 !2
-De plus, un message peut être sérialisé, donc:
-- Passage de messages d'une appli à une autre
-- Transparence réseau (passage d'une machine à une autre)
+BLooper: un thread avec une boucle de gestion de messages
+BHandler: objet qui traite les messages (MessageReceived)
 
-On peut sérialiser n'importe quoi dans un message
-- Envoi d'une fenêtre complète d'une application à une autre
-- Replicants
+BMessage: un... message!
+* Identifiant (entier 32 bits)
+* Conteneur générique
+* Accès par clés
+^ (chaîne de caractère + identifiant de type + index)
+* Valeurs: types primitifs, messages imbriqués,
+^ pointeurs, données brutes
 !3
-Protocole standardisé pour toutes les applications
-"Scripting": mécanisme de découverte de ce que sait faire
-une application + envoi de messages pour la contrôler
+BArchivable: un objet qui peut être "archivé" (sérialisé)
+dans un message.
+
+Possibilité de transférer un objet C++ à un autre thread,
+à une autre application, à une autre machine, …
+
+@ Applications
+
+BApplication: le looper principal d'une application
+* Identifiée par un type MIME
+* Gestion des arguments et des fichiers passés
+** en ligne de commande
+** par glisser-déposer
+
+BRoster: registre des applications (en cours d'exécution ou pas)
+* Lister les documents récents
+* Trouver et lancer l'application appropriée pour un fichier donné
+* Lancer une application à partir de son type MIME
+* Envoyer un message à toutes les applications
+^ ou à une application spécifique
+
+@ Scripting
+
+Interface standardisée pour contrôler les applications
+* Enumération des propriétés disponibles
+* Manipulation de ces propriétés via des actions
+** EXECUTE, GET, SET, CREATE, DELETE
+* Accessible en ligne de commande avec l'outil "hey"
+* Préfigure Binder qui est utilisé par Android
+
 Applications possibles: automatisation,
 interfaçage d'applis graphiques, lecteur d'écran, …
 
-En général, modèle de programmation évenementiel.
-Chaque thread réagit à des évènements.
-Si besoin de faire un traitement long, démarrage d'un
-thread "worker" dédié
+@ Interface Kit
+!1
+L'"Interface Kit" regroupe les APIs pour l'interface graphique.
 
-Conséquence: UI toujours réactive
-(même si les traitements sont longs et le CPU chargé)
+Chaque fenêtre (BWindow) est un BLooper
+(avec son thread dédié).
+Chaque vue (BView) est un BHandler attaché à la fenêtre
 
-@ Interface kit
+Les traitements longs sont faits dans le thread de l'application
+(BApplication). Les fenêtres sont donc toujours réactives.
 
-Construire une UI sur la base de l'application kit
+Attention toutefois au problèmes
+de synchronisation entre threads.
+!2
+BControl: un "contrôle" (bouton, liste, slider, ...)
+* Une valeur, une action ("invoke") qui envoie un message
 
-BWindow subclass BLooper
-BView subclass BHandler
+BButton, BSlider, BListView, BScrollbar, …
 
-BControl permet le scripting par défaut (minimaliste).
-Chaque "contrôle" a une valeur associée et peut être "invoqué"
-pour déclencher une action.
+@ app_server
 
-évènements transmis sous forme de messages:
-- Mouvements clavier \/ souris
-- Demande de rendu d'une BView
-- Fermeture de la fenêtre ou de l'application
-- …
+L'affichage est géré par app_server qui communique avec les
+drivers vidéos via les accelerants.
 
-@ Translation kit
+* Rendu graphique côté serveur, donc pas de gel
+^ de la boucle d'évènements de la fenêtre
+* Transparence réseau (remote_app_server)
 
-Gestion des formats de fichiers (images, documents texte, ...)
-- API générique de conversion d'un format vers un autre
-- Formats gérés par des add-ons
-- Idée générale: conversion dans un format d'échange
-- Chaque application peut lire et écrire tous les formats
-	y compris ceux qui n'existent pas encore
 
-@ Network Kit
+@ Storage Kit
+!1
+Gestion des fichiers…
 
-Les bases: sockets, résolution d'adresse, …
-Sockets sécurisés avec SSL de façon transparente
+* Attributs étendus (xattrs)
+** typés et sans limite de taille pour BFS
+** Utilisés pour stocker données et métadonnées
+** Peuvent être indexés et requêtés
 
-API plus haut niveau pour les protocoles applicatifs
-Pour l'instant, HTTP et Gopher
-- Fonctionnement asynchrone
-- Evènements sous forme de BMessages
+* Surveillance de nœeuds (node monitoring)
+** Recevoir une notification à chaque changement
+^ d'un fichier ou dossier
 
-@ Media Kit
+Si on associe les 2, ça devient intéressant:
+requête sur les attributs avec mise à jour en
+direct des résultats.
+!2
+Exemples de métadonnées:
+* Courriel (sujet, expéditeur, …)
+* Contacts (nom, adresse, …)
+* Musique (auteur, titre, album, …)
+* Signature MIME des applications, icônes
+* Taille et position de fenêtres
 
-Gestion de flux et de noeuds "media" 
-- Idée de base: gestion de "trames" temps réel
-- Calcul et ajustement de la latence nécessaire
-  pour faire les traitements assez en avance
-- Surtout pour le son et la vidéo, mais pas que
+@ BArchivable
 
-Exemple: sous-titres
+Stocker l'état d'un objet dans un BMessage
+et reconstruire un clone de cet objet
+* À partir d'une archive stockée dans un fichier
+* Ou reçue par le réseau
+* Ou venant d'une autre application
+
+Exemples d'utilisation
+* Glisser-déposer
+* Replicants (insérer une vue d'une application
+^ dans une autre)
+* Conception d'interface graphiques
+
+
+@ Translation Kit
+Conversion de formats de données
+* Négociation d'un format commun
+* Chargement du traducteur sous forme d'add-on
+* API standard permettant l'ajout de nouveaux formats
+^ sans modifier les applications
+
+Exemples d'utilisation
+* Enregistrer une image
+* Acquérir une image
+** Depuis un fichier, une webcam, un scanner
+* Enregistrer et lire du texte formatté
+** BTextView <> RTF, DOC, HTML, …
+
 
 @ Package kit
 !1
@@ -512,3 +571,205 @@ Solution retenue: packagefs
 
 Le noyau lui-même est dans un paquet,
 donc même le bootloader a été impacté!
+
+@ Mais au fait, c'est quoi un projet libre?
+
+Au minimum:
+
+* Du code
+* Une license
+* Un développeur (au moins)
+* Un utilisateur (au moins)
+
+@ Haiku en chiffres
+
+* 6 millions de lignes de code
+* License MIT
+* Une trentaine de développeurs
+* Pas de comptage des utilisateurs
+
+@ Organisation:
+ * Un projet (www.haiku-os.org)
+ * Deux associations (Haiku, Inc et HSA)
+ * Une communauté
+
+@ Localisation
+* Allemagne, France, USA, Nouvelle Zélande, …
+* Traductions:
+  ** 40 langues en cours (y compris l'Esperanto)
+  ** 30 à peu près complètes
+
+@ Communauté
+  * Utilisateurs
+  ** Nombre inconnu!
+  * Rapporteur de bugs
+  * Forums, mailing lists,
+	canaux IRC ou salons XMPP
+  * HUGs locaux (par pays)
+  * Autres sites web
+    ** UBIX, IsComputerOn, BeBytes,…
+  * Traductions
+  * Support utilisateur, entraide
+  * Présence à des conférences et évènements
+	autour du logiciel libre
+
+@ Soutiens techniques
+  * Apprentissage du C++ pour aider le projet
+  * Hébergement de machines de build
+    pour l'intégration continue
+  * Développement de nouvelles applications
+  * Contribution de patches pour Haiku
+
+@ Haiku, Inc
+* Créée en juin 2003 par le fondateur du projet
+* Non-profit 501(c)3 
+  (similaire aux associations loi 1901, aux US)
+* Objectif: séparer les fonds projet
+de son compte en banque personnel
+* Gestion des finances
+* Détentrice du copyright sur une partie du code
+** au choix des développeurs
+* Détentrice des marques déposées
+* "représentant légal" du projet
+* Pas d'intervention sur les décisions techniques
+
+@ Fonctionnement
+
+* Pas d'adhésion payante
+* Seulement 6 membres
+** Dont 4 sont également dévelopeurs
+* Décisions par vote
+
+@ Revenus
+
+* Dons
+* Ventes de goodies et de CDs
+* Goodsearch
+* Google Code-In et Google Summer of Code
+
+@ Dépenses
+* Infrastructure du projet
+** Hébergement web, git, etc.
+** 1 serveur dédié avec tous les services (en Allemagne)
+** 1 hébergement web seulement servant de mirroir aux US
+** Noms de domaines et certificats SSL
+* Conférences et coding sprints
+** Frais de déplacement
+** Flyers
+** Contraintes: dépenses raisonables,
+** rapport publié sur le site de Haiku
+* Contrats avec les dévelopeurs
+** Plutôt mal payé
+* Achat de matériel pour le développement de drivers
+
+@ Difficultés
+
+Manque de transparence
+* Discussions par mails privés
+* Données confidentielles
+** Données bancaires
+** Informations personelles
+
+Lenteur des décisions
+* Manque de temps des membres
+* Pas de renouvellement périodique
+* Difficulté à réunir le bureau
+
+@ Haiku Support Association
+* Groupement d'utilisateurs
+* Adhésion payante (36 euros par an)
+* 19 membres
+* Organisation de la conférence BeGeistert
+et du coding sprint
+
+@ Le projet Haiku
+* Entité informelle
+* Développeurs ayant accès au git
+* Décisions prises par concensus
+* … ou par vote si aucun compromis n'est trouvé
+
+@ Workflow
+* Dépot Git + Gerrit (revue de code)
+* Suivi de bugs avec Trac
+* Mailing lists et canaux IRC pour les discussions
+
+@ Devenir contributeur
+
+* Comprendre "la Voie de Haiku"
+* Contribuer
+** Patches, rapports de bugs, support utilisateur
+* Gagner la confiance des contributeurs
+* Proposition sur la mailing list
+** Décision par concensus
+
+@ Dysfonctionnements
+
+C'est celui qui code qui décide
+* Décision par vote inutile s'il n'y a personne
+  pour la mettre en pratique
+Manque de contributeurs dans tous les domaines
+* pas seulement des codeurs!
+Organisation complexe
+Difficulté à prendre des décisions
+* Discussions sans fin
+
+@ Les projets satellites:
+* haikuports,
+* haikudepot server,
+* haikuarchives,
+* 3rd party apps
+
+@ HaikuArchives
+
+* Abandonware pour BeOS
+* Pas de mainteneurs
+* Projets développés pendant le GCI
+
+@ HaikuPorts
+
+* "ports" (comme pour les BSD)
+* écriture de recettes: contribution assez facile
+** (pas toujours besoin de parler le C++)
+
+@ HaikuDepot server
+
+Interface web pour la gestion des paquets
+* Ajout de captures d'écran,
+* Traduction des descriptions,
+* Notation des paquets
+* Service web pour le client natif
+
+@ Les contributions upstream:
+* Trac (suivi de bugs et demandes d'amélioration)
+** Plusieurs "hacks" (plug-ins)
+** Composants hiérarchisés, outils de documnetation…
+* Pootle (traductions en ligne)
+** Support des fichiers "catalogs"
+   pour les traductions de Haiku
+* libsolv (résolution de dépendances pour les paquets)
+** Utilisé par OpenSUSE
+* clang, cmake, SDL, …
+** Nombreux projets, portés principalement par HaikuPorts
+* Les forks: gcc, glibc, mesa, ffmpeg
+** Anciennes versions compatibles avec BeOS
+** Versions récentes disponibles en parallèle
+* webkit (moteur HTML/CSS/Javadscript)
+** Trop rapide pour nous…
+
+@ Les évènements
+* BeGeistert (organisé par HSA)
+** Conférence et Coding Sprint
+* GSoC et GCI
+** Encadrement de lycéens et d'étudiants
+** Initiation à l'open source
+** Financé par Google
+* Participation à d'autres évènements
+** Capitole du Libre
+** FOSDEM
+** Ohio Linux Fest
+** ...
+
+@ Projets commerciaux
+* TuneTracker Systems
+* iZCorp
+
