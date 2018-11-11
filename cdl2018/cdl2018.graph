@@ -1,0 +1,35 @@
+@-80	-1160	Quoi de neuf dans Haiku R1/beta1?
++120	220	haiku.png
+@160	-320	Bienvenue !
+@0	200	Rappels sur Haiku
+@1040	160	Dates clés
+@1840	0	     6 ans!
++20	180	zelda.jpg
+@3320	80	Rappel des objectifs
+@3200	920	Gestionnaire de paquets
++0	0	wonderbrush.png
+@3280	1720	Plein de paquets
+@1640	1760	Navigateur web
+@1600	2720	Préférences réseau
++280	340	network.png
+@1560	3680	Nettoyage de l'interface
++60	320	bigmouse.png
++540	260	mouse.png
++660	480	smallmouse.png
+@1560	4480	Le multimedia
+@1560	5440	Bureau à distance
+@-1240	7160	EFI
+@40	5400	SerialConnect
+@40	5960	Debugger
++100	300	debugger.png
+@-1360	7840	Nouvel ordonnanceur
++160	200	cpu.png
+@-1320	8800	ASLR, DEP, SMAP
+@40	7120	launch_daemon
+@-1200	9440	pilotes virtio
+@-1120	10200	pilotes réseau
+@-1240	10800	systèmes de fichiers
+@-1040	12800	Bugfixes et optimisations
+@-1080	11640	time_t sur 64 bit
+@-1080	12160	Bluetooth
+@-1000	13400	A suivre…

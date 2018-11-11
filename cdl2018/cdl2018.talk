@@ -1,0 +1,239 @@
+@designsize=1024x768
+@canvascolour=#336699
+
+@ Quoi de neuf dans Haiku R1/beta1?
+
+Adrien Destugues \/ PulkoMandy
+Capitole du Libre - Novembre 2018
+
+!haiku.png
+
+@ Bienvenue !
+
+@ Rappels sur Haiku
+
+Clone de BeOS
+Système pour les ordinateurs de bureau
+Simple mais efficace
+
+@ Dates clés
+
+2001 - Début du projet
+2009 - Version Alpha 1
+2012 - Version Alpha 4
+
+2018 - Version Beta 1!
+
+@      6 ans!
+       Alors, on a fait quoi pendant 6 ans?
+
+!zelda.jpg
+
+@ Rappel des objectifs
+
+Au départ, le but de Haiku était
+"fournir un remplacement complet à BeOS R5,
+compatible au niveau binaire avec ce dernier"
+
+En 2010, après la sortie de la première version
+alpha, un sondage a permis de mettre à jour et
+de préciser cet objectif.
+
+@ Gestionnaire de paquets
+
+!1
+En particulier, un des ajouts était la possiblité
+de mettre à jour le système d'une version à une autre.
+
+Finalement, les développeurs en charge de régler ce problème
+se sont lancés dans la création d'un système de gestion de
+paquets, en tentant de concilier les avantages habituels
+(gestion des dépendances, etc) avec la facilité d'utilisation
+habituelle de Haiku (installation d'un paquet par simple
+glisser-déposer dans un dossier).
+
+!2
+Au final, cela a demandé de gros changements, avec des
+impacts dans le noyau, le bootloader, un nouveau système
+de fichiers.
+
+Mais surtout, de gros besoin d'un point de vue admin sys pour
+gérer la construction et la distribution des paquets, ce pour
+quoi l'infrastructure de Haiku n'était pas du tout prête.
+
+!3
+!wonderbrush.png
+
+!4
+Les fonctions principales:
+- Installation par glisser-déposer
+- Gestionnaire de paquets graphiques
+- Possiblité de rechercher directement une commande sans
+  connaître le nom du paquet
+- Désinstallation par suppression d'un fichier
+- Pas d'extraction des paquets (possibilité de partager un
+  logiciel installé avec un autre utilisateur)
+- Possibilité de restaurer une version précédente du système
+
+@ Plein de paquets
+
+Avoir un système de paquets propre nous permet enfin de
+capitaliser nos efforts pour porter des bibliothèques et
+des applications, de façon durable
+  Qt, Telegram, Qupzilla, ...
+  LibreOffice
+
+Grace à HaikuArchives, des logiciels natifs:
+  Paladin, Weather, LnLauncher, ...
+
+De nouveaux logiciels commencent à apparaître:
+  Koder, WonderBrush 3
+
+@ Navigateur web
+
+Indispensable pour un système moderne un peu sérieux
+
+Navigateur basé sur WebKit, pas mis à jour depuis 2010.
+La version Beta est parue avec un code datant de début 2017.
+Une version encore plus à jour est en cours de préparation.
+
+Encore du travail sur ce point...
+
+Support de Gopher, parce que pourquoi pas?
+
+@ Préférences réseau
+
+Une nouvelle fenêtre plus jolie pour configurer les préférences
+réseau.
+
+Gestion des interfaces et des adresses IP, mais aussi des services
+(ssh, ftp, ...) qui peuvent être activés ou désactivés.
+
+!network.png
+
+@ Nettoyage de l'interface
+!1
+Mise à l'échelle de l'interface pour les écrans à haute densité
+(travail encore en cours)
+
+!bigmouse.png
+!mouse.png
+!smallmouse.png
+!2
+Mise à jour en direct de toutes les applications lors d'un
+changement de configuration de l'apparence (couleurs,
+taille de police)
+
+@ Le multimedia
+
+Support du streaming dans les API media de façon directe.
+Possibilité de lire une vidéo directement à partir d'une URL,
+ou à partir d'un tuner TNT
+
+Mise à jour de ffmpeg à la toute dernière version pour avoir de
+meilleures performances et pouvoir décoder les formats vidéos
+récents.
+
+Ajout d'un décodeur pour les fichiers APE, pas gérés correctement
+par ffmpeg pour certains d'entre eux.
+
+Amélioration des drivers pour les cartes son HDA
+(encore en chantier)
+
+@ Bureau à distance
+
+Le protocole utilisé par l'app_server de Haiku permet une vraie
+transparence réseau. Le bureau à distance utilise donc peu de
+bande passante (pour envoyer des commandes de dessin, pas des
+bitmaps) et reste fluide même avec une connexion internet lente.
+
+@ EFI
+
+Il est possible de démarrer Haiku en EFI.
+
+Les tables de partitions GPT fonctionnent également
+comme attendu.
+
+@ SerialConnect
+
+Un terminal série. Présent surtout parce qu'il était disponible
+dans BeOS, mais très pratique pour les gens qui veulent utiliser
+un port série (soit pour faire du dévelopement embarqué, soit pour
+débugger Haiku sur une autre machine)
+
+@ Debugger
+
+L'outil indispensable pour... debugger!
+
+Possiblité d'enregistrer un "rapport" avec les infos utile pour
+remonter un bug (backtrace; etc)
+!debugger.png
+
+@ Nouvel ordonnanceur
+
+Plus de limite à 8 coeurs de CPUs
+Plus de ralentissement avec l'augmentation du nombre de threads
+!cpu.png
+
+@ ASLR, DEP, SMAP
+
+Utilisation des fonctionalités du CPU pour protéger des bugs
+(tentative d'exécuter du code à une adresse qui n'est pas sensée
+en contenir, accès du kernel à une zone mémoire utilisateur qu'il
+n'est pas sensé toucher, ...)
+
+@ launch_daemon
+
+Le bon vieux script bash qui lance les services au démarrage
+a été remplacé par un vrai serveur
+
+- Démarrage de plusieurs services en parallèle
+  avec gestion des dépendances
+- Redémarrage des services automatique en cas de crash
+- Possiblité pour les applications d'ajouter leurs propres services
+
+@ pilotes virtio
+
+Pour une utilisation efficace en machine virtuelle
+
+- Disques durs,
+- Réseau,
+- Générateur de nombres aléatoires,
+- Mémoire "ballon"
+
+@ pilotes réseau
+
+Mis à jour avec ceux de FreeBSD 11
+(dans lesquels on a trouvé des bugs...)
+
+@ systèmes de fichiers
+
+NFSv4
+
+Mise à jour de btrfs (implémentait une version expérimentale)
+
+userlandfs (FUSE, systèmes de fichiers de BeOS),
+et donc support de SMB via FuseSMB
+
+@ Bugfixes et optimisations
+
+Tout plein! Mais il reste de quoi faire encore.
+
+@ time_t sur 64 bit
+
+Prêts pour le bug de l'an 2038!
+
+@ Bluetooth
+
+Pour l'instant seulement l'appairage,
+on ne sait encore rien faire d'autre.
+
+@ A suivre…
+
+Prochaine version l'année prochaine?
+
+- Amélioration des pilotes graphiques et audio
+- Stabilisation du navigateur web
+- Gestion complète des écrans haut DPI
+- Client mail sans bugs
+- Et plein d'autres choses, on espère!
