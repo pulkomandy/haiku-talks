@@ -1,0 +1,86 @@
+https://bit-booster.com/graph.html
+
+Level 1
+=======
+
+git commit
+git log
+git status
+
+...|d|travail en cours
+d|c|Trop facile!
+c|b|
+b|a|
+a| |C'est parti!
+
+Level 2
+=======
+
+git branch
+git checkout
+
+i|h|Version 1.1
+h|e|Correction de bugs importants
+g|f|En route pour la version 2.0!
+f|e|Nouveaux trucs
+e|d|Version 1.0
+d|c|Trop facile!
+
+
+Level 3
+=======
+
+git stash
+
+...|i|Travail en cours
+i|h|Version 1.1
+h|e|Correction de bugs importants
+stash|g|Travail en cours
+g|f|En route pour la version 2.0!
+f|e|Nouveaux trucs
+e|d|Version 1.0
+d|c|Trop facile!
+
+Level 4
+=======
+
+git clone
+git fetch
+git pull
+git push
+
+Level 5
+=======
+
+git merge
+
+j|i g|Intégration des corrections dans la version 2.x
+i|h|Version 1.1
+h|e|Correction de bugs importants
+stash|g|Travail en cours
+g|f|En route pour la version 2.0!
+f|e|Nouveaux trucs
+e|d|Version 1.0
+d|c|Trop facile!
+
+Level 6
+=======
+
+Merge conflicts
+
+Level 7
+=======
+
+git commit --amend
+.gitignore
+
+Level 8
+=======
+
+git rebase
+
+Level 9
+=======
+
+git rebase -i
+git filter-branch

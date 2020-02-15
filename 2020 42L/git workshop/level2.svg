@@ -1,0 +1,16 @@
+<svg
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="39" height="141" text-rendering="optimizeLegibility" style="border: 0px; margin: 0px; padding: 0;" id="bit-booster">
+    <path d="M24,83C25,109.25,8,91.75,9,107" stroke-width="2" stroke-opacity="1" opacity="1" fill="none" stroke="#79c753"></path>
+    <path d="M9,131L9,166" stroke-width="2" stroke-opacity="1" stroke-dasharray="15,3,3,3,3,3,3,3,3,3,3" opacity="1" stroke="#034f84"></path>
+    <path d="M9,107L9,131" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <path d="M24,83L24,83" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#79c753"></path>
+    <path d="M24,59L24,83" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#79c753"></path>
+    <path d="M9,35L9,107" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <path d="M9,11L9,35" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <circle id="C_d" cx="9" cy="131" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_e" cx="9" cy="107" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_f" cx="24" cy="83" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_g" cx="24" cy="59" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_h" cx="9" cy="35" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_i" cx="9" cy="11" r="4" fill="#034f84" stroke="none"></circle>
+</svg>

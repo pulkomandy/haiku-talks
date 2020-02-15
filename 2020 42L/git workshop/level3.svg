@@ -1,0 +1,20 @@
+<svg
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="39" height="189" text-rendering="optimizeLegibility" style="border: 0px; margin: 0px; padding: 0;" id="bit-booster">
+    <path d="M24,131C25,157.25,8,139.75,9,155" stroke-width="2" stroke-opacity="1" opacity="1" fill="none" stroke="#79c753"></path>
+    <path d="M9,179L9,214" stroke-width="2" stroke-opacity="1" stroke-dasharray="15,3,3,3,3,3,3,3,3,3,3" opacity="1" stroke="#034f84"></path>
+    <path d="M9,155L9,179" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <path d="M24,131L24,131" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#79c753"></path>
+    <path d="M24,107L24,131" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#79c753"></path>
+    <path d="M24,83L24,107" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#79c753"></path>
+    <path d="M9,59L9,155" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <path d="M9,35L9,59" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <path d="M9,11L9,35" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <circle id="C_d" cx="9" cy="179" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_e" cx="9" cy="155" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_f" cx="24" cy="131" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_g" cx="24" cy="107" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_stash" cx="24" cy="83" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_h" cx="9" cy="59" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_i" cx="9" cy="35" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_..." cx="9" cy="11" r="4" fill="#034f84" stroke="none"></circle>
+</svg>

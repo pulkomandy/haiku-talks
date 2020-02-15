@@ -1,0 +1,9 @@
+<svg
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="141" text-rendering="optimizeLegibility" style="border: 0px; margin: 0px; padding: 0;" id="bit-booster">
+    <circle id="C_fichier.en-cours" cx="24" cy="131" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_fichier.old.relu" cx="24" cy="107" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_fichier.final" cx="24" cy="83" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_fichier.v2" cx="24" cy="59" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_fichier.old" cx="24" cy="35" r="4" fill="#79c753" stroke="none"></circle>
+    <circle id="C_fichier" cx="9" cy="11" r="4" fill="#034f84" stroke="none"></circle>
+</svg>

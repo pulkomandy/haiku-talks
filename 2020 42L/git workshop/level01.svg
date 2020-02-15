@@ -1,0 +1,12 @@
+<svg
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="117" text-rendering="optimizeLegibility" style="border: 0px; margin: 0px; padding: 0;" id="bit-booster">
+    <path d="M9,83L9,107" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <path d="M9,59L9,83" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <path d="M9,35L9,59" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <path d="M9,11L9,35" stroke-width="2" stroke-opacity="1" opacity="1" stroke="#034f84"></path>
+    <circle id="C_a" cx="9" cy="107" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_b" cx="9" cy="83" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_c" cx="9" cy="59" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_d" cx="9" cy="35" r="4" fill="#034f84" stroke="none"></circle>
+    <circle id="C_..." cx="9" cy="11" r="4" fill="#034f84" stroke="none"></circle>
+</svg>
